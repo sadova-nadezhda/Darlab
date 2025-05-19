@@ -958,6 +958,10 @@
       width: calc(16 * var(--width-multiplier));
       background: var(--light-back, $light-back);
     }
+    span {
+      display: inline-block;
+      min-width: calc(20 * var(--width-multiplier));
+    }
   }
   &__news {
     display: flex;
