@@ -348,12 +348,12 @@ window.addEventListener("load", function () {
 
   // Quantity
 
-  const rows = document.querySelectorAll('.table-materials .table__row');
+  const materialsRows = document.querySelectorAll('.table-materials .table__row');
   const totalAmount = document.querySelector('.cabinet__amount span');
 
   const updateTotal = () => {
     let sum = 0;
-    rows.forEach(row => {
+    materialsRows.forEach(row => {
       const countEl = row.querySelector('.table__quantity span');
       const count = parseInt(countEl.textContent, 10);
       sum += count;
@@ -364,32 +364,37 @@ window.addEventListener("load", function () {
         row.classList.remove('active');
       }
     });
-    totalAmount.textContent = sum;
+
+    if(totalAmount) {
+      totalAmount.textContent = sum;
+    }
   };
 
-  rows.forEach(row => {
-    const minusBtn = row.querySelector('.button.minus');
-    const plusBtn = row.querySelector('.button.plus');
-    const countEl = row.querySelector('.table__quantity span');
+  if(materialsRows) {
+    materialsRows.forEach(row => {
+      const minusBtn = row.querySelector('.button.minus');
+      const plusBtn = row.querySelector('.button.plus');
+      const countEl = row.querySelector('.table__quantity span');
 
-    minusBtn.addEventListener('click', () => {
-      let value = parseInt(countEl.textContent, 10);
-      if (value > 0) {
-        value--;
+      minusBtn.addEventListener('click', () => {
+        let value = parseInt(countEl.textContent, 10);
+        if (value > 0) {
+          value--;
+          countEl.textContent = value;
+          updateTotal();
+        }
+      });
+
+      plusBtn.addEventListener('click', () => {
+        let value = parseInt(countEl.textContent, 10);
+        value++;
         countEl.textContent = value;
         updateTotal();
-      }
+      });
     });
+    updateTotal();
+  }
 
-    plusBtn.addEventListener('click', () => {
-      let value = parseInt(countEl.textContent, 10);
-      value++;
-      countEl.textContent = value;
-      updateTotal();
-    });
-  });
-
-  updateTotal();
 
   // Modal
 
