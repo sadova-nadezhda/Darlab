@@ -1,5 +1,6 @@
 window.addEventListener("load", function () {
   const header = document.querySelector("header");
+  const lang = document.documentElement.lang || 'en';
 
   const handleScroll = () => {
     window.scrollY > 0 ? header.classList.add("scroll") : header.classList.remove("scroll");
@@ -395,6 +396,20 @@ window.addEventListener("load", function () {
     updateTotal();
   }
 
+  // Date 
+
+  const locales = {
+    en: flatpickr.l10ns.default,
+    ru: flatpickr.l10ns.ru,
+    kk: flatpickr.l10ns.kk
+  };
+
+  const locale = locales[lang] || flatpickr.l10ns.default;
+
+  var fp = flatpickr(".date", {
+    dateFormat: "d-m-Y",
+    locale: locale
+  });
 
   // Modal
 

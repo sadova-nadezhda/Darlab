@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Список пациентов и анализы</title>
-  <link rel="stylesheet" href="css/style.css?_v=20250520114202" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250520183327">
+  <link rel="stylesheet" href="css/style.css?_v=20250520183327" />
 </head>
 
   <body>
@@ -110,13 +111,15 @@
               </a></li>
             </ul>
             <div class="cabinet__wrap">
-              <div class="cabinet__search fade-in">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.4828 16.4221C17.1899 16.1293 16.715 16.1293 16.4221 16.4221C16.1292 16.715 16.1292 17.1899 16.4221 17.4828L17.4828 16.4221ZM19.4697 20.5304C19.7626 20.8233 20.2374 20.8233 20.5303 20.5304C20.8232 20.2375 20.8232 19.7626 20.5303 19.4697L19.4697 20.5304ZM16.4221 17.4828L19.4697 20.5304L20.5303 19.4697L17.4828 16.4221L16.4221 17.4828ZM10.8572 16.9643C7.48427 16.9643 4.75 14.23 4.75 10.8572H3.25C3.25 15.0585 6.65584 18.4643 10.8572 18.4643V16.9643ZM16.9643 10.8572C16.9643 14.23 14.23 16.9643 10.8572 16.9643V18.4643C15.0585 18.4643 18.4643 15.0585 18.4643 10.8572H16.9643ZM10.8572 4.75C14.23 4.75 16.9643 7.48427 16.9643 10.8572H18.4643C18.4643 6.65584 15.0585 3.25 10.8572 3.25V4.75ZM10.8572 3.25C6.65584 3.25 3.25 6.65584 3.25 10.8572H4.75C4.75 7.48427 7.48427 4.75 10.8572 4.75V3.25Z" fill="#626976"/>
-                </svg>
-                <form action="" class="search-form">
-                  <input type="text" placeholder="Поиск..." id="search" class="input-search" autocomplete="off">
-                </form>
+              <div class="cabinet__top">
+                <div class="cabinet__search fade-in">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.4828 16.4221C17.1899 16.1293 16.715 16.1293 16.4221 16.4221C16.1292 16.715 16.1292 17.1899 16.4221 17.4828L17.4828 16.4221ZM19.4697 20.5304C19.7626 20.8233 20.2374 20.8233 20.5303 20.5304C20.8232 20.2375 20.8232 19.7626 20.5303 19.4697L19.4697 20.5304ZM16.4221 17.4828L19.4697 20.5304L20.5303 19.4697L17.4828 16.4221L16.4221 17.4828ZM10.8572 16.9643C7.48427 16.9643 4.75 14.23 4.75 10.8572H3.25C3.25 15.0585 6.65584 18.4643 10.8572 18.4643V16.9643ZM16.9643 10.8572C16.9643 14.23 14.23 16.9643 10.8572 16.9643V18.4643C15.0585 18.4643 18.4643 15.0585 18.4643 10.8572H16.9643ZM10.8572 4.75C14.23 4.75 16.9643 7.48427 16.9643 10.8572H18.4643C18.4643 6.65584 15.0585 3.25 10.8572 3.25V4.75ZM10.8572 3.25C6.65584 3.25 3.25 6.65584 3.25 10.8572H4.75C4.75 7.48427 7.48427 4.75 10.8572 4.75V3.25Z" fill="#626976"/>
+                  </svg>
+                  <form action="" class="search-form">
+                    <input type="text" placeholder="Поиск..." id="search" class="input-search" autocomplete="off">
+                  </form>
+                </div>
               </div>
               <div class="cabinet__table fade-in" data-delay="0.2">
                 <div class="table table-patients table-search">
@@ -291,7 +294,10 @@
   </div>
 </footer>
  
-    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250520114202"></script>
-<script src="js/app.js?_v=20250520114202"></script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250520183327"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250520183327"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250520183327"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250520183327"></script>
+<script src="js/app.js?_v=20250520183327"></script>
   </body>
 </html>

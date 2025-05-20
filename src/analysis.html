@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   @@include('html/head.html', { "title": "Анализы" })
   <body>
     @@include('html/header.html')
@@ -8,7 +8,7 @@
       <svg class="back back_1" width="537" height="357" viewBox="0 0 537 357" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M318.582 -454.888C485.295 -292.682 489.361 -26.4632 327.662 139.729C165.963 305.921 -100.267 309.153 -266.98 146.948" stroke="#94B522" stroke-width="180" stroke-linecap="round"/>
       </svg>
-      <section class="cabinet cabinet-partners section-first section-hidden">
+      <section class="cabinet cabinet-partners analysis section-first section-hidden">
         <div class="container">
           <div class="cabinet__container">
             <ul class="cabinet__aside">
@@ -68,15 +68,69 @@
               </a></li>
             </ul>
             <div class="cabinet__wrap">
-              <div class="cabinet__search fade-in">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.4828 16.4221C17.1899 16.1293 16.715 16.1293 16.4221 16.4221C16.1292 16.715 16.1292 17.1899 16.4221 17.4828L17.4828 16.4221ZM19.4697 20.5304C19.7626 20.8233 20.2374 20.8233 20.5303 20.5304C20.8232 20.2375 20.8232 19.7626 20.5303 19.4697L19.4697 20.5304ZM16.4221 17.4828L19.4697 20.5304L20.5303 19.4697L17.4828 16.4221L16.4221 17.4828ZM10.8572 16.9643C7.48427 16.9643 4.75 14.23 4.75 10.8572H3.25C3.25 15.0585 6.65584 18.4643 10.8572 18.4643V16.9643ZM16.9643 10.8572C16.9643 14.23 14.23 16.9643 10.8572 16.9643V18.4643C15.0585 18.4643 18.4643 15.0585 18.4643 10.8572H16.9643ZM10.8572 4.75C14.23 4.75 16.9643 7.48427 16.9643 10.8572H18.4643C18.4643 6.65584 15.0585 3.25 10.8572 3.25V4.75ZM10.8572 3.25C6.65584 3.25 3.25 6.65584 3.25 10.8572H4.75C4.75 7.48427 7.48427 4.75 10.8572 4.75V3.25Z" fill="#626976"/>
-                </svg>
-                <form action="" class="search-form">
-                  <input type="text" placeholder="Поиск..." id="search" class="input-search" autocomplete="off">
-                </form>
+              <div class="cabinet__top">
+                <div class="cabinet__search">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.4828 16.4221C17.1899 16.1293 16.715 16.1293 16.4221 16.4221C16.1292 16.715 16.1292 17.1899 16.4221 17.4828L17.4828 16.4221ZM19.4697 20.5304C19.7626 20.8233 20.2374 20.8233 20.5303 20.5304C20.8232 20.2375 20.8232 19.7626 20.5303 19.4697L19.4697 20.5304ZM16.4221 17.4828L19.4697 20.5304L20.5303 19.4697L17.4828 16.4221L16.4221 17.4828ZM10.8572 16.9643C7.48427 16.9643 4.75 14.23 4.75 10.8572H3.25C3.25 15.0585 6.65584 18.4643 10.8572 18.4643V16.9643ZM16.9643 10.8572C16.9643 14.23 14.23 16.9643 10.8572 16.9643V18.4643C15.0585 18.4643 18.4643 15.0585 18.4643 10.8572H16.9643ZM10.8572 4.75C14.23 4.75 16.9643 7.48427 16.9643 10.8572H18.4643C18.4643 6.65584 15.0585 3.25 10.8572 3.25V4.75ZM10.8572 3.25C6.65584 3.25 3.25 6.65584 3.25 10.8572H4.75C4.75 7.48427 7.48427 4.75 10.8572 4.75V3.25Z" fill="#626976"/>
+                  </svg>
+                  <form action="" class="search-form">
+                    <input type="text" placeholder="Поиск..." id="search" class="input-search" autocomplete="off">
+                  </form>
+                </div>
+                <button class="cabinet__btn-filter button">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 17.75C12.4142 17.75 12.75 17.4142 12.75 17C12.75 16.5858 12.4142 16.25 12 16.25V17.75ZM4 16.25C3.58579 16.25 3.25 16.5858 3.25 17C3.25 17.4142 3.58579 17.75 4 17.75L4 16.25ZM12 6.25C11.5858 6.25 11.25 6.58579 11.25 7C11.25 7.41421 11.5858 7.75 12 7.75V6.25ZM20 7.75C20.4142 7.75 20.75 7.41421 20.75 7C20.75 6.58579 20.4142 6.25 20 6.25V7.75ZM12 16.25L4 16.25L4 17.75L12 17.75V16.25ZM12 7.75L20 7.75V6.25L12 6.25V7.75ZM3.25 7C3.25 8.51878 4.48122 9.75 6 9.75V8.25C5.30964 8.25 4.75 7.69036 4.75 7H3.25ZM6 9.75C7.51878 9.75 8.75 8.51878 8.75 7H7.25C7.25 7.69036 6.69036 8.25 6 8.25V9.75ZM8.75 7C8.75 5.48122 7.51878 4.25 6 4.25V5.75C6.69036 5.75 7.25 6.30964 7.25 7H8.75ZM6 4.25C4.48122 4.25 3.25 5.48122 3.25 7H4.75C4.75 6.30964 5.30964 5.75 6 5.75V4.25ZM20.75 17C20.75 15.4812 19.5188 14.25 18 14.25V15.75C18.6904 15.75 19.25 16.3096 19.25 17H20.75ZM18 14.25C16.4812 14.25 15.25 15.4812 15.25 17H16.75C16.75 16.3096 17.3096 15.75 18 15.75V14.25ZM15.25 17C15.25 18.5188 16.4812 19.75 18 19.75V18.25C17.3096 18.25 16.75 17.6904 16.75 17H15.25ZM18 19.75C19.5188 19.75 20.75 18.5188 20.75 17H19.25C19.25 17.6904 18.6904 18.25 18 18.25V19.75Z" fill="#313742"/>
+                  </svg>
+                  <span>Фильтр</span>
+                  <span class="count">2</span>
+                </button>
+                <div class="cabinet__filter filter">
+                  <div class="filter__top">
+                    <h6 class="filter__caption">Фильтр</h6>
+                    <button class="filter__close button">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="16" height="16" transform="translate(4 4)" fill="white"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.1366 13.3151L16.8507 18.0292C17.1761 18.3546 17.7038 18.3546 18.0292 18.0292C18.3546 17.7038 18.3546 17.1761 18.0292 16.8507L13.3151 12.1366L18.0292 7.4226C18.3546 7.09716 18.3546 6.56952 18.0292 6.24409C17.7038 5.91865 17.1761 5.91865 16.8507 6.24409L12.1366 10.9581L7.42259 6.24408C7.09715 5.91864 6.56951 5.91864 6.24408 6.24408C5.91864 6.56951 5.91864 7.09715 6.24408 7.42259L10.9581 12.1366L6.24408 16.8507C5.91864 17.1761 5.91864 17.7038 6.24408 18.0292C6.56951 18.3546 7.09715 18.3546 7.42259 18.0292L12.1366 13.3151Z" fill="#313742"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="filter__content">
+                    <div class="filter__row">
+                      <div class="filter__heading">
+                        <h6>По дате</h6>
+                        <button class="button">Очистить</button>
+                      </div>
+                      <div class="filter__group">
+                        <label class="filter__date">
+                          <div>От:</div>
+                          <input placeholder="Выберите дату" class=date />
+                        </label>
+                        <label  class="filter__date">
+                          <div>До:</div>
+                          <input placeholder="Выберите дату" class=date />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="filter__row">
+                      <div class="filter__heading">
+                        <h6>По статусу</h6>
+                        <button class="button">Очистить</button>
+                      </div>
+                      <div class="filter__group">
+                        <select name="status">
+                          <option value="">Готов</option>
+                          <option value="">Не готов</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="filter__bottom">
+                    <button class="filter__reset button button-border">Сбросить</button>
+                    <button class="filter__apply button button-green">Применить</button>
+                  </div>
+                </div>
               </div>
-              <div class="cabinet__table fade-in" data-delay="0.2">
+              <div class="cabinet__table" data-delay="0.2">
                 <div class="table table-analysis table-search">
                   <div class="table__head">
                     <div class="table__row">
@@ -91,7 +145,7 @@
                     <div class="table__row">
                       <div class="table__col">10.01.2025г</div>
                       <div class="table__col">Профиль "Витамины и микроэле...</div>
-                      <div class="table__col">Садуакас Нурлан Алиханович</div>
+                      <div class="table__col">Карлыгашева Бахыт Бауржановна</div>
                       <div class="table__col">01203019</div>
                       <div class="table__col">19 660 ₸</div>
                       <div class="table__col cabinet__status ready"></div>
@@ -117,7 +171,7 @@
                     <div class="table__row">
                       <div class="table__col">10.01.2025г</div>
                       <div class="table__col">Профиль "Витамины и микроэле...</div>
-                      <div class="table__col">Садуакас Нурлан Алиханович</div>
+                      <div class="table__col">Карлыгашева Бахыт Бауржановна</div>
                       <div class="table__col">01203019</div>
                       <div class="table__col">19 660 ₸</div>
                       <div class="table__col cabinet__status error"></div>
@@ -143,8 +197,8 @@
                     <div class="table__row">
                       <div class="table__col">10.01.2025г</div>
                       <div class="table__col">Профиль "Витамины и микроэле...</div>
-                      <div class="table__col">Садуакас Нурлан Алиханович</div>
-                      <div class="table__col">01203019</div>
+                      <div class="table__col">Карлыгашева Бахыт Бауржановна</div>
+                      <div class="table__col">01303019</div>
                       <div class="table__col">19 660 ₸</div>
                       <div class="table__col cabinet__status repeat"></div>
                       <a class="table__btn table__view">
@@ -157,7 +211,7 @@
                       <div class="table__col">10.01.2025г</div>
                       <div class="table__col">Профиль "Витамины и микроэле...</div>
                       <div class="table__col">Садуакас Нурлан Алиханович</div>
-                      <div class="table__col">01203019</div>
+                      <div class="table__col">01303019</div>
                       <div class="table__col">19 660 ₸</div>
                       <div class="table__col cabinet__status error"></div>
                       <a class="table__btn table__view">
@@ -169,7 +223,7 @@
                   </div>
                 </div>
               </div>
-              <div class="cabinet__bottom fade-in" data-delay="0.3">
+              <div class="cabinet__bottom" data-delay="0.3">
                 <a class="cabinet__button button button-border green show"><span>Показать еще</span></a>
               </div>
             </div>

@@ -147,7 +147,7 @@ input {
   background-color: transparent;
 }
 
-input:not(.input-search), textarea, select {
+input.field, textarea.comment, select.select {
   width: 100%;
   padding: calc(16 * var(--width-multiplier)) calc(18 * var(--width-multiplier));
   border-radius: calc(12 * var(--width-multiplier));
@@ -163,6 +163,16 @@ input:not(.input-search), textarea, select {
 textarea {
   resize: none;
   height: 90px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../img/down-2.svg) calc(100% - (10 * var(--width-multiplier))) 50% / calc(16 * var(--width-multiplier)) no-repeat;
+  &:focus {
+    outline: none;
+  }
 }
 
 .button {
