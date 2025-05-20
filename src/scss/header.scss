@@ -69,7 +69,11 @@
       gap: calc(32 * var(--width-multiplier));
       @media (max-width: 980px) {
         flex-direction: column;
+        align-items: flex-start;
       }
+    }
+    @media (max-width: 980px) {
+      width: 100%;
     }
   }
   &__menu {
@@ -90,6 +94,9 @@
   &__search {
     display: flex;
     min-width: calc(24 * var(--width-multiplier));
+    @media (max-width: 980px) {
+      width: 100%;
+    }
 
     input[type="search"] {
       position: absolute;
@@ -116,6 +123,9 @@
         outline: none;
       }
       @media (max-width: 980px) {
+        position: static;
+        transform: unset;
+        width: 100%;
         background-color: var(--white, $white);
         border-color: #CACACC;
       }
