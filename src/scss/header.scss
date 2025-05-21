@@ -108,7 +108,7 @@
       padding: calc(12 * var(--width-multiplier));
       border-radius: calc(20 * var(--width-multiplier));
       border: 1px solid transparent;
-      background: url(../img/search.svg) 100% 50% / 24px no-repeat;
+      background: url(../img/search.svg) 100% 50% / calc(24 * var(--width-multiplier)) no-repeat;
       background-color: transparent;
       transition: all 0.3s ease-out;
 
