@@ -123,6 +123,7 @@
       }
       &_2 {
         right: 0;
+        // top: calc(180 * var(--width-multiplier));
         bottom: -50%;
         transform: translateY(-50%);
         width: calc(368 * var(--width-multiplier));
@@ -187,7 +188,6 @@
     width: calc(48 * var(--width-multiplier));
     height: calc(48 * var(--width-multiplier));
     padding: calc(10 * var(--width-multiplier));
-    margin-top: calc(24 * var(--width-multiplier));
     border-radius: calc(8 * var(--width-multiplier));
     background: var(--light-back, $light-back);
     font-size: calc(16 * var(--width-multiplier));
@@ -234,14 +234,14 @@
 
 .filter {
   position: absolute;
-  top: 100%;
+  top: calc(100% + calc(12 * var(--width-multiplier)));
   right: 0;
   min-width: calc(510 * var(--width-multiplier));
   padding: calc(16 * var(--width-multiplier));
   border-radius: calc(12 * var(--width-multiplier));
   background-color: var(--white, $white);
   font-size: calc(14 * var(--width-multiplier));
-  box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px calc(4 * var(--width-multiplier)) calc(24 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.08);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
@@ -486,6 +486,30 @@
   }
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8 * var(--width-multiplier));
+  font-size: calc(14 * var(--width-multiplier));
+  font-weight: 500;
+  line-height: 1;
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: calc(8 * var(--width-multiplier));
+    padding: calc(6 * var(--width-multiplier)) calc(10 * var(--width-multiplier));
+    border-radius: calc(24 * var(--width-multiplier));
+    color: var(--white, $white);
+    background-color: var(--primary-green, $primary-green);
+    svg {
+      min-width: calc(16 * var(--width-multiplier));
+      width: calc(16 * var(--width-multiplier));
+      height: calc(16 * var(--width-multiplier));
+    }
+  }
+}
+
 .scroll-animate {
   opacity: 0;
   transform: translateY(50px);
@@ -586,6 +610,7 @@
   line-height: 1;
   &__head {
     width: 100%;
+    padding: calc(8 * var(--width-multiplier));
     font-family: MontserratAlternates;
     font-weight: 600;
   }
@@ -596,8 +621,6 @@
     color: #313742;
     background-color: var(--light-back, $light-back);
     .table__row {
-      padding: calc(8 * var(--width-multiplier));
-      border-radius: calc(12 * var(--width-multiplier));
       transition: background-color 0.3s ease-out;
       &:hover {
         background-color: var(--primary-yellow, $primary-yellow);
@@ -609,6 +632,8 @@
     align-items: center;
     gap: calc(8 * var(--width-multiplier));
     width: 100%;
+    padding: calc(8 * var(--width-multiplier));
+    border-radius: calc(12 * var(--width-multiplier));
     &.hide {
       display: none;
     }
@@ -689,6 +714,12 @@
         }
       }
     }
+  }
+  &__analysis {
+    max-width: calc(250 * var(--width-multiplier));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &-patients {
     @media(max-width: 980px) {
@@ -988,6 +1019,9 @@
     }
   }
   &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: calc(24 * var(--width-multiplier));
     height: 100%;
     overflow: hidden;
   }
@@ -1074,9 +1108,8 @@
     align-items: center;
     justify-content: flex-end;
     gap: calc(24 * var(--width-multiplier));
-    margin-top: calc(24 * var(--width-multiplier));
     &_lg {
-      margin-top: calc(50 * var(--width-multiplier));
+      margin-top: calc(24 * var(--width-multiplier));
     }
     @media(max-width: 980px) {
       gap: calc(16 * var(--width-multiplier));
@@ -1130,7 +1163,6 @@
     display: flex;
     align-items: center;
     gap: calc(16 * var(--width-multiplier));
-    margin-bottom: calc(24 * var(--width-multiplier));
     @media(max-width: 980px) {
       // flex-direction: column;
       // align-items: flex-start;
@@ -1186,7 +1218,6 @@
   &__points {
     width: max-content;
     padding: calc(16 * var(--width-multiplier));
-    margin-bottom: calc(24 * var(--width-multiplier));
     border-radius: calc(12 * var(--width-multiplier));
     color: var(--white, $white);
     background-color: var(--dark-green, $dark-green);
@@ -1213,7 +1244,7 @@
     }
   }
   &__instruction {
-    margin-top: calc(50 * var(--width-multiplier));
+    margin-top: calc(24 * var(--width-multiplier));
     h4 {
       color: #313742;
     }

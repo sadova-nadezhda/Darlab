@@ -279,12 +279,49 @@ window.addEventListener("load", function () {
 
   document.querySelectorAll(".scroll-animate").forEach((el) => observer.observe(el));
 
+  const calendarDate = document.querySelectorAll(".calendar__date");
+
+  calendarDate.forEach(el => {
+    const targetWidth = el.dataset.width;
+
+    if (!targetWidth) return;
+
+    el.style.width = '0%';
+
+    animate(el, { width: `${targetWidth}%` }, { duration: 1, delay: 0.3, easing: 'linear' });
+  });
+
   // Form Search
 
   const searchForm = document.querySelector('.search-form');
   if (searchForm) {
     searchForm.addEventListener('submit', (e) => {
       e.preventDefault();
+    });
+  }
+
+  // Form Filter
+
+  const Filterform = document.getElementById("form-filter");
+
+  document.querySelectorAll(".filter__heading .button").forEach((clearBtn, index) => {
+    clearBtn.addEventListener("click", () => {
+      const filterRow = clearBtn.closest(".filter__row");
+
+      filterRow.querySelectorAll("input").forEach((input) => {
+        input.value = "";
+      });
+
+      filterRow.querySelectorAll("select").forEach((select) => {
+        select.selectedIndex = 0;
+      });
+    });
+  });
+
+  const resetBtn = document.querySelector(".filter__reset");
+  if(resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      Filterform.reset();
     });
   }
 

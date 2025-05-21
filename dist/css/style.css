@@ -523,7 +523,7 @@ span.flatpickr-weekday {
 .header__search input[type=search]:focus {
   width: 100%;
   background-color: var(--white, #FFFFFF);
-  background-position: calc(100% - 12px) 50%;
+  background-position: calc(100% - 12 * var(--width-multiplier)) 50%;
   border-color: #CACACC;
   outline: none;
 }
@@ -787,7 +787,6 @@ span.flatpickr-weekday {
   width: calc(48 * var(--width-multiplier));
   height: calc(48 * var(--width-multiplier));
   padding: calc(10 * var(--width-multiplier));
-  margin-top: calc(24 * var(--width-multiplier));
   border-radius: calc(8 * var(--width-multiplier));
   background: var(--light-back, #F0F1F5);
   font-size: calc(16 * var(--width-multiplier));
@@ -828,14 +827,14 @@ span.flatpickr-weekday {
 
 .filter {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 12 * var(--width-multiplier));
   right: 0;
   min-width: calc(510 * var(--width-multiplier));
   padding: calc(16 * var(--width-multiplier));
   border-radius: calc(12 * var(--width-multiplier));
   background-color: var(--white, #FFFFFF);
   font-size: calc(14 * var(--width-multiplier));
-  box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px calc(4 * var(--width-multiplier)) calc(24 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.08);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
@@ -1130,6 +1129,32 @@ span.flatpickr-weekday {
   color: #626976;
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8 * var(--width-multiplier));
+  font-size: calc(14 * var(--width-multiplier));
+  font-weight: 500;
+  line-height: 1;
+}
+
+.tabs__button {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--width-multiplier));
+  padding: calc(6 * var(--width-multiplier)) calc(10 * var(--width-multiplier));
+  border-radius: calc(24 * var(--width-multiplier));
+  color: var(--white, #FFFFFF);
+  background-color: var(--primary-green, #94B522);
+}
+
+.tabs__button svg {
+  min-width: calc(16 * var(--width-multiplier));
+  width: calc(16 * var(--width-multiplier));
+  height: calc(16 * var(--width-multiplier));
+}
+
 .scroll-animate {
   opacity: 0;
   transform: translateY(50px);
@@ -1219,6 +1244,7 @@ span.flatpickr-weekday {
 
 .table__head {
   width: 100%;
+  padding: calc(8 * var(--width-multiplier));
   font-family: MontserratAlternates;
   font-weight: 600;
 }
@@ -1232,8 +1258,6 @@ span.flatpickr-weekday {
 }
 
 .table__body .table__row {
-  padding: calc(8 * var(--width-multiplier));
-  border-radius: calc(12 * var(--width-multiplier));
   transition: background-color 0.3s ease-out;
 }
 
@@ -1246,6 +1270,8 @@ span.flatpickr-weekday {
   align-items: center;
   gap: calc(8 * var(--width-multiplier));
   width: 100%;
+  padding: calc(8 * var(--width-multiplier));
+  border-radius: calc(12 * var(--width-multiplier));
 }
 
 .table__row.hide {
@@ -1340,6 +1366,13 @@ span.flatpickr-weekday {
 
 .table__quantity button:hover path {
   fill: var(--white, #FFFFFF);
+}
+
+.table__analysis {
+  max-width: calc(250 * var(--width-multiplier));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table-patients .table__row {
@@ -1585,6 +1618,9 @@ span.flatpickr-weekday {
 }
 
 .cabinet__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--width-multiplier));
   height: 100%;
   overflow: hidden;
 }
@@ -1691,11 +1727,10 @@ span.flatpickr-weekday {
   align-items: center;
   justify-content: flex-end;
   gap: calc(24 * var(--width-multiplier));
-  margin-top: calc(24 * var(--width-multiplier));
 }
 
 .cabinet__bottom_lg {
-  margin-top: calc(50 * var(--width-multiplier));
+  margin-top: calc(24 * var(--width-multiplier));
 }
 
 .cabinet__button {
@@ -1746,7 +1781,6 @@ span.flatpickr-weekday {
   display: flex;
   align-items: center;
   gap: calc(16 * var(--width-multiplier));
-  margin-bottom: calc(24 * var(--width-multiplier));
 }
 
 .cabinet__back {
@@ -1809,7 +1843,6 @@ span.flatpickr-weekday {
   width: -moz-max-content;
   width: max-content;
   padding: calc(16 * var(--width-multiplier));
-  margin-bottom: calc(24 * var(--width-multiplier));
   border-radius: calc(12 * var(--width-multiplier));
   color: var(--white, #FFFFFF);
   background-color: var(--dark-green, #225E2E);
@@ -1842,7 +1875,7 @@ span.flatpickr-weekday {
 }
 
 .cabinet__instruction {
-  margin-top: calc(50 * var(--width-multiplier));
+  margin-top: calc(24 * var(--width-multiplier));
 }
 
 .cabinet__instruction h4 {

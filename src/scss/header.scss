@@ -119,7 +119,7 @@
       &:focus {
         width: 100%;
         background-color: var(--white, $white);
-        background-position: calc(100% - 12px) 50%;
+        background-position: calc(100% - (12 * var(--width-multiplier))) 50%;
         border-color: #CACACC;
         outline: none;
       }
