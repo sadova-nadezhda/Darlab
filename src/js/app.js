@@ -279,7 +279,7 @@ window.addEventListener("load", function () {
 
   document.querySelectorAll(".scroll-animate").forEach((el) => observer.observe(el));
 
-  // Form
+  // Form Search
 
   const searchForm = document.querySelector('.search-form');
   if (searchForm) {
@@ -288,7 +288,7 @@ window.addEventListener("load", function () {
     });
   }
 
-  // Search
+  // Search Table
   const search = document.querySelector('#search');
   const searchTable = document.querySelector('.table-search');
 
@@ -325,7 +325,7 @@ window.addEventListener("load", function () {
 
   // Show More
   const showMore = document.querySelector('.cabinet__button.show');
-  const hiddenRows = () => document.querySelectorAll('.table__row.hidden');
+  const hiddenRows = () => document.querySelectorAll('.cabinet__wrap .hidden');
   const ShowPerClick = 2;
 
   if(showMore && hiddenRows) {
@@ -406,10 +406,91 @@ window.addEventListener("load", function () {
 
   const locale = locales[lang] || flatpickr.l10ns.default;
 
-  var fp = flatpickr(".date", {
+  // Profile Picker
+
+  const date = flatpickr(".date", {
     dateFormat: "d-m-Y",
-    locale: locale
+    locale: locale,
+    maxDate: "today"
   });
+
+  // Filter Picker
+
+  const fromPicker = flatpickr(".fromDate", {
+    dateFormat: "d-m-Y",
+    locale: locale,
+    maxDate: "today",
+    onChange: function(selectedDates, dateStr, instance) {
+      toPicker.set("minDate", selectedDates[0]);
+    }
+  });
+
+  const toPicker = flatpickr(".toDate", {
+    dateFormat: "d-m-Y",
+    locale: locale,
+    maxDate: "today",
+    onChange: function(selectedDates, dateStr, instance) {
+      fromPicker.set("maxDate", selectedDates[0]);
+    }
+  });
+
+  // Filter
+
+  const filterToggleBtn = document.querySelector('.cabinet__btn-filter');
+  const filterBlock = document.querySelector('.cabinet__filter');
+  const filterCloseBtn = document.querySelector('.filter__close');
+  const cabinetTable = document.querySelector('.cabinet__table');
+
+  if (filterToggleBtn && filterBlock && cabinetTable) {
+    filterToggleBtn.addEventListener('click', function () {
+      filterBlock.classList.toggle('active');
+      cabinetTable.style.zIndex = filterBlock.classList.contains('active') ? '-1' : '0';
+    });
+  }
+
+  if (filterCloseBtn && cabinetTable) {
+    filterCloseBtn.addEventListener('click', function () {
+      filterBlock.classList.remove('active');
+      setTimeout(() => {
+        cabinetTable.style.zIndex = '0';
+      }, 300);
+    });
+  }
+
+  // Accordion
+
+  const accordionRows = document.querySelectorAll('.accordion__row');
+  
+  if(accordionRows) {
+    accordionRows.forEach(row => {
+      const head = row.querySelector('.accordion__head');
+      const body = row.querySelector('.accordion__body');
+      
+      head.addEventListener('click', function(e) {
+        if (e.target.closest('.accordion__download')) {
+          return;
+        }
+        
+        accordionRows.forEach(otherRow => {
+          if (otherRow !== row) {
+            otherRow.classList.remove('active');
+            otherRow.querySelector('.accordion__body').style.maxHeight = '0';
+            otherRow.querySelector('.accordion__body').style.opacity = '0';
+          }
+        });
+        
+        if (row.classList.contains('active')) {
+          row.classList.remove('active');
+          body.style.maxHeight = '0';
+          body.style.opacity = '0';
+        } else {
+          row.classList.add('active');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.opacity = '1';
+        }
+      });
+    });
+  }
 
   // Modal
 

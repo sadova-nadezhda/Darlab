@@ -298,6 +298,10 @@ h6 {
   border-color: #E9EEEA;
 }
 
-.flatpickr-day {
+.flatpickr-day.today {
   border-color: #94B522;
+}
+
+.flatpickr-calendar, .flatpickr-months .flatpickr-prev-month, .flatpickr-day, span.flatpickr-weekday {
+  color: #313742;
 }

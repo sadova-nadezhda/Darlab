@@ -108,7 +108,7 @@
       padding: calc(12 * var(--width-multiplier));
       border-radius: calc(20 * var(--width-multiplier));
       border: 1px solid transparent;
-      background: url(../img/search.svg) calc(100% - 12px) 50% / 24px no-repeat;
+      background: url(../img/search.svg) 100% 50% / 24px no-repeat;
       background-color: transparent;
       transition: all 0.3s ease-out;
 
@@ -119,6 +119,7 @@
       &:focus {
         width: 100%;
         background-color: var(--white, $white);
+        background-position: calc(100% - 12px) 50%;
         border-color: #CACACC;
         outline: none;
       }
