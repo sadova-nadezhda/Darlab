@@ -1,34 +1,115 @@
-window.addEventListener("load", function () {
-  const header = document.querySelector("header");
-  const lang = document.documentElement.lang || 'en';
+gsap.registerPlugin(ScrollTrigger);
 
+const pageContainer = document.querySelector(".page-wrapper");
+
+/* SMOOTH SCROLL */
+// const scroller = new LocomotiveScroll({
+//   el: pageContainer,
+//   smooth: true
+// });
+
+// scroller.on("scroll", ScrollTrigger.update);
+
+// ScrollTrigger.scrollerProxy(pageContainer, {
+//   scrollTop(value) {
+//     return arguments.length
+//       ? scroller.scrollTo(value, 0, 0)
+//       : scroller.scroll.instance.scroll.y;
+//   },
+//   getBoundingClientRect() {
+//     return {
+//       left: 0,
+//       top: 0,
+//       width: window.innerWidth,
+//       height: window.innerHeight
+//     };
+//   },
+//   pinType: pageContainer.style.transform ? "transform" : "fixed"
+// });
+
+// Общие функции
+const debounce = (func, delay = 100) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
+};
+
+const toggleClass = (element, className, condition) => {
+  condition ? element.classList.add(className) : element.classList.remove(className);
+};
+
+// GSAP 
+function initBenefitsAnimation() {
+  const benefitsSection = document.querySelector("#benefits");
+  if (!benefitsSection) return;
+
+  const pinWrap = benefitsSection.querySelector(".pin-wrap");
+  const cards = benefitsSection.querySelectorAll(".benefits-card");
+  const cardImages = benefitsSection.querySelectorAll(".benefits-card__img");
+
+  // Анимация для всего блока (горизонтальный параллакс)
+  gsap.to(pinWrap, {
+    x: "-35%", // Сдвигаем блок влево на 35%
+    ease: "none",
+    scrollTrigger: {
+      trigger: benefitsSection,
+      start: "top 15%",
+      end: "+=2000", // Увеличиваем область прокрутки для анимации
+      scrub: 1, 
+      pin: true,
+      markers: false
+    }
+  });
+
+  // Анимация для иконок (сдвиг вправо для создания глубины)
+  cardImages.forEach((img) => {
+    gsap.fromTo(img,
+      { x: 0 },
+      {
+        x: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: img,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        }
+      }
+    );
+  });
+}
+
+window.addEventListener("load", function () {
+  const lang = document.documentElement.lang || 'en';
+  const header = document.querySelector("header");
+  
+  // Обработчик скролла
   const handleScroll = () => {
-    window.scrollY > 0 ? header.classList.add("scroll") : header.classList.remove("scroll");
+    toggleClass(header, "scroll", window.scrollY > 0);
   };
 
   handleScroll();
 
   // Menu
-  let link = document.querySelector(".header__burger");
-  let menu = document.querySelector(".header__nav");
+  const link = document.querySelector(".header__burger");
+  const menu = document.querySelector(".header__nav");
+  
   if (menu) {
-    link.addEventListener(
-      "click",
-      function () {
-        link.classList.toggle("active");
-        menu.classList.toggle("open");
-      },
-      false
-    );
+    link.addEventListener("click", () => {
+      link.classList.toggle("active");
+      menu.classList.toggle("open");
+    });
   }
 
   // Password
-  [].forEach.call( document.querySelectorAll('.toggle-password'),function(button) {
+  document.querySelectorAll('.toggle-password').forEach(button => {
     button.addEventListener('click', () => {
       const label = button.closest('label');
       const input = label.querySelector('input');
-
       const isPassword = input.type === 'password';
+      
       input.type = isPassword ? 'text' : 'password';
       button.classList.toggle('visible', isPassword);
     });
@@ -68,6 +149,7 @@ window.addEventListener("load", function () {
     input.addEventListener("keydown", mask, false);
   });
 
+
   // Валидация формы
   const cabinetForm = document.querySelector('.cabinet__form');
 
@@ -75,155 +157,111 @@ window.addEventListener("load", function () {
     const saveBtn = cabinetForm.querySelector('.cabinet__button.save');
     const cancelBtn = cabinetForm.querySelector('.cabinet__button.cancel');
     const modalBtn = cabinetForm.querySelector('.modal__button');
-
     const inputs = Array.from(cabinetForm.querySelectorAll('input'));
-    const initialValues = new Map();
+    const initialValues = new Map(inputs.map(input => [input.id, input.value]));
 
-    startValidation()
+    const validatePassword = (password) => {
+      return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?-]).{8,}$/.test(password);
+    };
 
-    function startValidation() {
-      cabinetForm.addEventListener('submit', (event) => {
-        if (hasInvalidInput()) {
-          event.preventDefault();
-          formError();
-        } else if (!cabinetForm.classList.contains('modal__form')) {
-          event.preventDefault();
-          inputs.forEach(input => {
-            initialValues.set(input.id, input.value);
-          });
-          toggleButton();
-        } else {
-          toggleButton();
-        }
-      });
-      
-      inputs.forEach(input => {
-        initialValues.set(input.id, input.value);
-      });
-      
-      inputs.forEach((inputElement) => {
-        inputElement.addEventListener('input', () => {
-          checkInputValidity(inputElement)
-          toggleButton()
-        })
-      })
-    }
+    const checkLengthMismatch = (inputElement) => {
+      if (inputElement.type !== 'text') return '';
+      const valueLength = inputElement.value.trim().length;
+      return valueLength < inputElement.minLength 
+        ? `${inputElement.dataset.errorMessage} ${inputElement.minLength}`
+        : '';
+    };
 
-    function checkInputValidity(inputElement) {
+    const toggleErrorSpan = (inputElement, errorMessage = '') => {
+      const errorElement = document.querySelector(`#${inputElement.id}-error`);
+      toggleClass(inputElement, 'invalid', !!errorMessage);
+      toggleClass(errorElement, 'invalid', !!errorMessage);
+      errorElement.textContent = errorMessage;
+    };
+
+    const checkInputValidity = (inputElement) => {
       if (inputElement.id === 'sum') {
         const rawValue = inputElement.value.replace(/\s/g, '');
         const numericValue = parseInt(rawValue, 10);
         const minValue = parseInt(inputElement.dataset.min, 10);
-
-        if (isNaN(numericValue) || numericValue < minValue) {
-          inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-        } else {
-          inputElement.setCustomValidity('');
-        }
-      } else if (inputElement.validity.patternMismatch) {
+        
+        inputElement.setCustomValidity(
+          isNaN(numericValue) || numericValue < minValue 
+            ? inputElement.dataset.errorMessage 
+            : ''
+        );
+      } 
+      else if (inputElement.validity.patternMismatch) {
         inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-      } else {
+      } 
+      else {
         inputElement.setCustomValidity(checkLengthMismatch(inputElement));
       }
 
+      // Проверки паролей
       const passwordOld = document.getElementById('password-old');
       const passwordNew = document.getElementById('password-new');
       const passwordRepeat = document.getElementById('password-repeat');
 
-      if (inputElement.id === 'password-old') {
-        if (!validatePassword(inputElement.value)) {
-          inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-        } else {
-          inputElement.setCustomValidity('');
-        }
+      if (inputElement.id === 'password-old' && !validatePassword(inputElement.value)) {
+        inputElement.setCustomValidity(inputElement.dataset.errorMessage);
       }
-
+      
       if (inputElement.id === 'password-new') {
         if (!validatePassword(inputElement.value)) {
           inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-        } else if (inputElement.value === passwordOld.value) {
+        } else if (inputElement.value === passwordOld?.value) {
           inputElement.setCustomValidity(inputElement.dataset.errorMessage);
         } else {
           inputElement.setCustomValidity('');
         }
       }
 
-      // Проверка повтора пароля: должен совпадать с новым
-      if (inputElement.id === 'password-repeat') {
-        if (inputElement.value !== passwordNew.value) {
-          inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-        } else {
-          inputElement.setCustomValidity('');
-        }
+      if (inputElement.id === 'password-repeat' && inputElement.value !== passwordNew?.value) {
+        inputElement.setCustomValidity(inputElement.dataset.errorMessage);
       }
 
-      // Обновление отображения ошибок
-      if (!inputElement.validity.valid) {
-        toggleErrorSpan(inputElement, inputElement.validationMessage);
-      } else {
-        toggleErrorSpan(inputElement);
-      }
-    }
+      toggleErrorSpan(inputElement, inputElement.validationMessage);
+    };
 
-    function validatePassword(password) {
-      // Проверяем, содержит ли пароль минимум 8 символов, цифры, буквы верхнего и нижнего регистров, а также специальные символы
-      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?-]).{8,}$/;
-      return passwordRegex.test(password);
-    }
+    const hasInvalidInput = () => inputs.some(input => !input.validity.valid);
+    const isFormChanged = () => inputs.some(input => input.value !== initialValues.get(input.id));
 
-    function checkLengthMismatch(inputElement) {
-      if (inputElement.type !== 'text') {
-        return ''
-      }
-      const valueLength = inputElement.value.trim().length
-      if (valueLength < inputElement.minLength) {
-        return `${inputElement.dataset.errorMessage}  ${inputElement.minLength}`
-      }
-      return ''
-    }
-
-    function hasInvalidInput() {
-      return inputs.some((inputElement) => {
-        return !inputElement.validity.valid
-      })
-    }
-
-    function toggleErrorSpan(inputElement, errorMessage) {
-      const errorElement = document.querySelector(`#${inputElement.id}-error`)
-      if (errorMessage) {
-        inputElement.classList.add('invalid');
-        errorElement.classList.add('invalid');
-        errorElement.textContent = errorMessage;
-      } else {
-        inputElement.classList.remove('invalid');
-        errorElement.classList.remove('invalid');
-        errorElement.textContent = '';
-      }
-    }
-
-    function toggleButton() {
+    const toggleButton = () => {
       const changed = isFormChanged();
-      cancelBtn ? cancelBtn.disabled = !changed : false;
-      saveBtn ? saveBtn.disabled = !changed || hasInvalidInput() : false;
-      modalBtn ? modalBtn.disabled = !changed || hasInvalidInput() : false;
-    }
+      if (cancelBtn) cancelBtn.disabled = !changed;
+      if (saveBtn) saveBtn.disabled = !changed || hasInvalidInput();
+      if (modalBtn) modalBtn.disabled = !changed || hasInvalidInput();
+    };
 
-    function formError() {
-      // formErrorElement.textContent = formErrorElement.dataset.errorMessage;
-      inputs.forEach((inputElement) => {
-        if (inputElement.required && inputElement.value.trim() === '') {
-          inputElement.classList.add('invalid');
-        } else {
-          inputElement.classList.remove('invalid');
-        }
+    const formError = () => {
+      inputs.forEach(input => {
+        toggleClass(input, 'invalid', input.required && input.value.trim() === '');
       });
-    }
+    };
 
-    function isFormChanged() {
-      return inputs.some(input => input.value !== initialValues.get(input.id));
-    }
+    // Инициализация валидации
+    cabinetForm.addEventListener('submit', (e) => {
+      if (hasInvalidInput()) {
+        e.preventDefault();
+        formError();
+      } else if (!cabinetForm.classList.contains('modal__form')) {
+        e.preventDefault();
+        inputs.forEach(input => initialValues.set(input.id, input.value));
+        toggleButton();
+      } else {
+        toggleButton();
+      }
+    });
 
-    if(cancelBtn) {
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        checkInputValidity(input);
+        toggleButton();
+      });
+    });
+
+    if (cancelBtn) {
       cancelBtn.addEventListener('click', (e) => {
         e.preventDefault();
         inputs.forEach(input => {
@@ -235,206 +273,167 @@ window.addEventListener("load", function () {
     }
   }
 
-  // Animation
+  // Анимации
   const { animate, scroll } = Motion;
+  const animateElements = (selector, props, options) => {
+    document.querySelectorAll(selector).forEach(el => {
+      animate(el, props, {
+        duration: 1,
+        delay: parseFloat(el.dataset.delay || "0"),
+        easing: "ease-out",
+        ...options
+      });
+    });
+  };
 
-  document.querySelectorAll(".fade-in").forEach((el) => {
-    const delay = parseFloat(el.dataset.delay || "0");
-
-    animate(
-      el,
-      { opacity: [0, 1], transform: ["translateY(50px)", "translateY(0)"] },
-      { duration: 1, delay, easing: "ease-out" }
-    );
+  animateElements(".fade-in", { 
+    opacity: [0, 1], 
+    transform: ["translateY(50px)", "translateY(0)"] 
   });
 
-  document.querySelectorAll(".fade-down").forEach((el) => {
-    const delay = parseFloat(el.dataset.delay || "0");
-
-    animate(
-      el,
-      { opacity: [0, 1], transform: ["translateY(-50px)", "translateY(0)"] },
-      { duration: 1, delay, easing: "ease-out" }
-    );
+  animateElements(".fade-down", { 
+    opacity: [0, 1], 
+    transform: ["translateY(-50px)", "translateY(0)"] 
   });
 
-  document.querySelectorAll(".fade-left").forEach((el) => {
-    const delay = parseFloat(el.dataset.delay || "0");
-
-    animate(
-      el,
-      { opacity: [0, 1], transform: ["translateX(-50px)", "translateY(0)"] },
-      { duration: 1, delay, easing: "ease-out" }
-    );
+  animateElements(".fade-left", { 
+    opacity: [0, 1], 
+    transform: ["translateX(-50px)", "translateY(0)"] 
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animate(entry.target, { opacity: 1, transform: "translateY(0)" }, { duration: 0.8, easing: "ease-out" });
-        observer.unobserve(entry.target); // одноразовая анимация
+        animate(entry.target, { 
+          opacity: 1, 
+          transform: "translateY(0)" 
+        }, { 
+          duration: 0.8, 
+          easing: "ease-out" 
+        });
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll(".scroll-animate").forEach((el) => observer.observe(el));
+  document.querySelectorAll(".scroll-animate").forEach(observer.observe.bind(observer));
 
-  const calendarDate = document.querySelectorAll(".calendar__date");
-
-  calendarDate.forEach(el => {
-    const targetWidth = el.dataset.width;
-
-    if (!targetWidth) return;
-
+  // Календарь
+  document.querySelectorAll(".calendar__date").forEach(el => {
+    if (!el.dataset.width) return;
+    
     el.style.width = '0%';
-
-    animate(el, { width: `${targetWidth}%` }, { duration: 1, delay: 0.3, easing: 'linear' });
+    animate(el, { 
+      width: `${el.dataset.width}%` 
+    }, { 
+      duration: 1, 
+      delay: 0.3, 
+      easing: 'linear' 
+    });
   });
 
-  // Form Search
+  // Формы
+  document.querySelector('.search-form')?.addEventListener('submit', e => e.preventDefault());
 
-  const searchForm = document.querySelector('.search-form');
-  if (searchForm) {
-    searchForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-    });
-  }
-
-  // Form Filter
-
+  // Фильтры
   const Filterform = document.getElementById("form-filter");
+  const resetBtn = document.querySelector(".filter__reset");
 
-  document.querySelectorAll(".filter__heading .button").forEach((clearBtn, index) => {
+  document.querySelectorAll(".filter__heading .button").forEach(clearBtn => {
     clearBtn.addEventListener("click", () => {
       const filterRow = clearBtn.closest(".filter__row");
-
-      filterRow.querySelectorAll("input").forEach((input) => {
-        input.value = "";
-      });
-
-      filterRow.querySelectorAll("select").forEach((select) => {
-        select.selectedIndex = 0;
-      });
+      
+      filterRow.querySelectorAll("input").forEach(input => input.value = "");
+      filterRow.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
     });
   });
 
-  const resetBtn = document.querySelector(".filter__reset");
-  if(resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      Filterform.reset();
-    });
-  }
+  resetBtn?.addEventListener("click", () => Filterform.reset());
 
-  // Search Table
+  // Поиск по таблице
   const search = document.querySelector('#search');
   const searchTable = document.querySelector('.table-search');
 
   if(search && searchTable) {
-    function filterTable() {
+    const filterTable = debounce(() => {
       const filter = search.value.toUpperCase();
       const rows = searchTable.querySelectorAll('.table__body .table__row');
-      let visibleCount = 0;
-
-      for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("div");
-        let match = false;
-
-        for (let j = 0; j < cells.length; j++) {
-          if (cells[j].textContent.toUpperCase().includes(filter)) {
-            match = true;
-            break;
-          }
-        }
-
-        if (match) {
-          rows[i].classList.remove("hide");
-          visibleCount++;
-        } else {
-          rows[i].classList.add("hide");
-        }
-      }
-    }
-
-    search.addEventListener("input", function() {
-      filterTable();
+      
+      rows.forEach(row => {
+        const cells = row.getElementsByTagName("div");
+        const match = Array.from(cells).some(cell => 
+          cell.textContent.toUpperCase().includes(filter)
+        );
+        
+        toggleClass(row, "hide", !match);
+      });
     });
+
+    search.addEventListener("input", filterTable);
   }
 
-  // Show More
+  // Показать еще
   const showMore = document.querySelector('.cabinet__button.show');
-  const hiddenRows = () => document.querySelectorAll('.cabinet__wrap .hidden');
   const ShowPerClick = 2;
 
-  if(showMore && hiddenRows) {
+  if(showMore) {
     showMore.addEventListener('click', function () {
-      const rows = hiddenRows();
-
+      const rows = document.querySelectorAll('.cabinet__wrap .hidden');
+      
       if (rows.length === 0) {
         showMore.style.display = 'none';
         return;
       }
 
-      for (let i = 0; i < Math.min(ShowPerClick, rows.length); i++) {
-        rows[i].classList.remove('hidden');
-      }
-
-      if (hiddenRows().length === 0) {
+      Array.from(rows)
+        .slice(0, ShowPerClick)
+        .forEach(row => row.classList.remove('hidden'));
+        
+      if (!document.querySelector('.cabinet__wrap .hidden')) {
         showMore.style.display = 'none';
       }
     });
   }
 
-  // Quantity
-
+  // Количество материалов
   const materialsRows = document.querySelectorAll('.table-materials .table__row');
   const totalAmount = document.querySelector('.cabinet__amount span');
 
-  const updateTotal = () => {
-    let sum = 0;
-    materialsRows.forEach(row => {
-      const countEl = row.querySelector('.table__quantity span');
-      const count = parseInt(countEl.textContent, 10);
-      sum += count;
-
-      if (count > 0) {
-        row.classList.add('active');
-      } else {
-        row.classList.remove('active');
-      }
-    });
-
-    if(totalAmount) {
-      totalAmount.textContent = sum;
-    }
-  };
-
   if(materialsRows) {
+    const updateTotal = () => {
+      let sum = 0;
+      
+      materialsRows.forEach(row => {
+        const countEl = row.querySelector('.table__quantity span');
+        const count = parseInt(countEl.textContent, 10);
+        sum += count;
+        toggleClass(row, 'active', count > 0);
+      });
+
+      if(totalAmount) totalAmount.textContent = sum;
+    };
+
     materialsRows.forEach(row => {
       const minusBtn = row.querySelector('.button.minus');
       const plusBtn = row.querySelector('.button.plus');
       const countEl = row.querySelector('.table__quantity span');
 
-      minusBtn.addEventListener('click', () => {
-        let value = parseInt(countEl.textContent, 10);
-        if (value > 0) {
-          value--;
+      const updateCount = (change) => {
+        let value = parseInt(countEl.textContent, 10) + change;
+        if (value >= 0) {
           countEl.textContent = value;
           updateTotal();
         }
-      });
+      };
 
-      plusBtn.addEventListener('click', () => {
-        let value = parseInt(countEl.textContent, 10);
-        value++;
-        countEl.textContent = value;
-        updateTotal();
-      });
+      minusBtn.addEventListener('click', () => updateCount(-1));
+      plusBtn.addEventListener('click', () => updateCount(1));
     });
+    
     updateTotal();
   }
 
-  // Date 
-
+  // Date pickers
   const locales = {
     en: flatpickr.l10ns.default,
     ru: flatpickr.l10ns.ru,
@@ -443,91 +442,179 @@ window.addEventListener("load", function () {
 
   const locale = locales[lang] || flatpickr.l10ns.default;
 
-  // Profile Picker
-
   const date = flatpickr(".date", {
     dateFormat: "d-m-Y",
     locale: locale,
     maxDate: "today"
   });
 
-  // Filter Picker
-
   const fromPicker = flatpickr(".fromDate", {
     dateFormat: "d-m-Y",
     locale: locale,
     maxDate: "today",
-    onChange: function(selectedDates, dateStr, instance) {
-      toPicker.set("minDate", selectedDates[0]);
-    }
+    onChange: (selectedDates) => toPicker.set("minDate", selectedDates[0])
   });
 
   const toPicker = flatpickr(".toDate", {
     dateFormat: "d-m-Y",
     locale: locale,
     maxDate: "today",
-    onChange: function(selectedDates, dateStr, instance) {
-      fromPicker.set("maxDate", selectedDates[0]);
-    }
+    onChange: (selectedDates) => fromPicker.set("maxDate", selectedDates[0])
   });
 
-  // Filter
-
+  // Фильтр
   const filterToggleBtn = document.querySelector('.cabinet__btn-filter');
   const filterBlock = document.querySelector('.cabinet__filter');
   const filterCloseBtn = document.querySelector('.filter__close');
   const cabinetTable = document.querySelector('.cabinet__table');
 
   if (filterToggleBtn && filterBlock && cabinetTable) {
-    filterToggleBtn.addEventListener('click', function () {
+    filterToggleBtn.addEventListener('click', () => {
       filterBlock.classList.toggle('active');
       cabinetTable.style.zIndex = filterBlock.classList.contains('active') ? '-1' : '0';
     });
-  }
 
-  if (filterCloseBtn && cabinetTable) {
-    filterCloseBtn.addEventListener('click', function () {
+    filterCloseBtn?.addEventListener('click', () => {
       filterBlock.classList.remove('active');
-      setTimeout(() => {
-        cabinetTable.style.zIndex = '0';
-      }, 300);
+      setTimeout(() => cabinetTable.style.zIndex = '0', 300);
     });
   }
 
-  // Accordion
-
-  const accordionRows = document.querySelectorAll('.accordion__row');
-  
-  if(accordionRows) {
-    accordionRows.forEach(row => {
-      const head = row.querySelector('.accordion__head');
-      const body = row.querySelector('.accordion__body');
+  // Аккордеон
+  document.querySelectorAll('.accordion__row').forEach(row => {
+    const head = row.querySelector('.accordion__head');
+    const body = row.querySelector('.accordion__body');
+    
+    head.addEventListener('click', function(e) {
+      if (e.target.closest('.accordion__download')) return;
       
-      head.addEventListener('click', function(e) {
-        if (e.target.closest('.accordion__download')) {
-          return;
-        }
-        
-        accordionRows.forEach(otherRow => {
-          if (otherRow !== row) {
-            otherRow.classList.remove('active');
-            otherRow.querySelector('.accordion__body').style.maxHeight = '0';
-            otherRow.querySelector('.accordion__body').style.opacity = '0';
-          }
-        });
-        
-        if (row.classList.contains('active')) {
-          row.classList.remove('active');
-          body.style.maxHeight = '0';
-          body.style.opacity = '0';
-        } else {
-          row.classList.add('active');
-          body.style.maxHeight = body.scrollHeight + 'px';
-          body.style.opacity = '1';
+      document.querySelectorAll('.accordion__row').forEach(otherRow => {
+        if (otherRow !== row) {
+          otherRow.classList.remove('active');
+          otherRow.querySelector('.accordion__body').style.maxHeight = '0';
+          otherRow.querySelector('.accordion__body').style.opacity = '0';
         }
       });
+      
+      if (row.classList.contains('active')) {
+        row.classList.remove('active');
+        body.style.maxHeight = '0';
+        body.style.opacity = '0';
+      } else {
+        row.classList.add('active');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.opacity = '1';
+      }
+    });
+  });
+
+  // Swipers
+  const swipers = {
+    heroSwiper: {
+      direction: "vertical",
+      spaceBetween: 16,
+      loop: true,
+      autoplay: { 
+        delay: 2500, 
+        disableOnInteraction: false 
+      },
+      pagination: { 
+        el: ".hero-pagination" 
+      },
+      breakpoints: { 
+        981: { 
+          spaceBetween: 20 
+        } 
+      }
+    },
+    priceSwiper: {
+      direction: 'horizontal',
+      slidesPerView: 1.1,
+      spaceBetween: 16,
+      breakpoints: { 
+        981: { 
+          slidesPerView: 4, 
+          spaceBetween: 24 
+        } 
+      }
+    },
+    newsSwiper: {
+      direction: 'horizontal',
+      slidesPerView: 1.1,
+      spaceBetween: 16,
+      loop: true,
+      autoplay: { 
+        delay: 3000, 
+        disableOnInteraction: false 
+      },
+      breakpoints: { 
+        981: { 
+          slidesPerView: 2.8, 
+          spaceBetween: 20 
+        } 
+      }
+    },
+    teamsSwiper: {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loop: true,
+      initialSlide: 2,
+      slideToClickedSlide: true,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el: ".teams-pagination",
+      },
+      breakpoints: {
+        981: { 
+          slidesPerView: "auto", 
+          spaceBetween: 20,
+        },
+      }
+    }
+  };
+
+  Object.entries(swipers).forEach(([key, config]) => {
+    const el = document.querySelector(`.${key}`);
+    if (el) new Swiper(el, config);
+  });
+
+  const tabs = document.querySelector('.history-buttons .swiper-wrapper');
+
+  const tabButtons = new Swiper('.history-buttons', {
+    slidesPerView: 11,
+    mousewheel: true,
+  });
+
+  if(tabs) {
+    tabs.addEventListener('click', (event) => {
+      const target = event.target.closest('.swiper-slide');
+      if (target && !target.classList.contains('active-tab')) {
+        const activeTab = tabs.querySelector('.active-tab');
+        if (activeTab) activeTab.classList.remove('active-tab');
+        target.classList.add('active-tab');
+
+        const index = Array.from(tabs.children).indexOf(target);
+        tabContent.slideTo(index);
+      }
     });
   }
+
+  const tabContent = new Swiper('.history-content', {
+    slidesPerView: 1,
+  });
+
+  tabContent.on('slideChange', () => {
+    const previous = tabs.querySelector('.active-tab');
+    if (previous) previous.classList.remove('active-tab');
+
+    const newActive = tabs.children[tabContent.activeIndex];
+    if (newActive) newActive.classList.add('active-tab');
+  });
+
+  // GSAP 
+
+  initBenefitsAnimation()
 
   // Modal
 
@@ -577,24 +664,19 @@ window.addEventListener("load", function () {
     })
   }
 
-  // Listener
-
+  // Глобальные обработчики
   document.addEventListener("click", (e) => {
-    let target = e.target;
-    if (
-      !target.classList.contains("header__nav") &&
-      !target.classList.contains("header__burger")
-    ) {
-      link.classList.remove("active");
-      menu.classList.remove("open");
+    if (!e.target.closest(".header__nav") && !e.target.closest(".header__burger") && !e.target.closest(".header__search")) {
+      link?.classList.remove("active");
+      menu?.classList.remove("open");
     }
   });
 
   window.addEventListener("scroll", () => {
     handleScroll();
-    if (menu.classList.contains("open")) {
-      link.classList.remove("active");
-      menu.classList.remove("open");
+    if (menu?.classList.contains("open")) {
+      link?.classList.remove("active");
+      menu?.classList.remove("open");
     }
   });
 });

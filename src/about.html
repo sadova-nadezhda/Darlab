@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "О компании" })
+  <body>
+    @@include('html/header.html')
+
+    <main class="page-default page-hero">
+      <!-- <svg class="back back_1" width="406" height="675" viewBox="0 0 406 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1027_6718)">
+        <path d="M224.026 805.636C245.939 826.571 280.953 825.939 299.355 801.86C367.851 712.238 404.285 601.515 401.687 487.666C398.67 355.436 343.249 229.821 247.615 138.454C151.981 47.0868 23.9685 -2.54777 -108.261 0.469268C-222.11 3.06693 -331.056 44.5127 -417.461 117.025C-440.675 136.506 -439.709 171.513 -417.797 192.448L-352.914 254.436C-331.002 275.37 -296.495 274.078 -271.915 256.351C-223.187 221.209 -164.618 201.288 -103.711 199.898C-24.373 198.088 52.4344 227.869 109.815 282.689C167.195 337.509 200.448 412.878 202.258 492.216C203.648 553.124 186.419 612.54 153.536 662.82C136.948 688.183 137.231 722.713 159.144 743.648L224.026 805.636Z" fill="#F3A1BA"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_1027_6718" x="-438.552" y="0.339355" width="844.369" height="828.329" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1027_6718"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1027_6718" result="shape"/>
+        </filter>
+        </defs>
+      </svg> -->
+      <div class="page-wrapper">
+        @@include('html/breadcrumbs.html', { "title": "О компании" })
+        <section class="about-page section-pad section-hidden">
+          <div class="container">
+            <div class="about-page__container">
+              <div class="about-page__top">
+                <h1 class="about-page__title">DarLab — <strong>лаборатория будущего</strong>, доступная сегодня.</h1>
+                <div class="about-page__desc">DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</div>
+              </div>
+              <div class="about-page__box">
+                <img src="@img/about-1.png" alt="">
+                <div class="about-page__reviews"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        @@include('html/benefits.html')
+        <section id="teams" class="teams section-pad-bottom section-hidden">
+          <div class="container">
+            <div class="teams__container">
+              <h2 class="teams__title title-indent">Наша команда</h2>
+              <div class="teams__slider">
+                <div class="swiper teamsSwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-1.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-2.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-1.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-2.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-1.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-2.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-1.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide teams-card">
+                      <div class="teams-card__left">
+                        <img src="@img/teams-2.png" alt="" />
+                        <div class="teams-card__role">Лаборант-терапевт</div>
+                        <div class="teams-card__name">Мария Соколова</div>
+                      </div>
+                      <div class="teams-card__right">
+                        <div class="teams-card__top">
+                          <h3>Лаборанты</h3>
+                          <p class="teams-card__years">10+ лет опыта</p>
+                        </div>
+                        <div class="teams-card__bottom">
+                          <h4>Мария Соколова</h4>
+                          <p class="teams-card__txt">Обеспечивает точность исследований и надёжность лабораторных данных.</p>
+                          <a href="#" class="teams-card__link">Смотреть сертификацию</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="teams-pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="history" class="history section-pad-bottom section-hidden">
+          <div class="container">
+            <div class="history__container">
+              <div class="swiper history-buttons">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide active-tab"><span>2015</span></div>
+                  <div class="swiper-slide"><span>2016</span></div>
+                  <div class="swiper-slide"><span>2017</span></div>
+                  <div class="swiper-slide"><span>2018</span></div>
+                  <div class="swiper-slide"><span>2019</span></div>
+                  <div class="swiper-slide"><span>2020</span></div>
+                  <div class="swiper-slide"><span>2021</span></div>
+                  <div class="swiper-slide"><span>2022</span></div>
+                  <div class="swiper-slide"><span>2023</span></div>
+                  <div class="swiper-slide"><span>2024</span></div>
+                  <div class="swiper-slide"><span>2025</span></div>
+                </div>
+              </div>
+              <div class="swiper history-content">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <h4 class="history__caption">Совместный медицинский офис с “INVITRO”</h4>
+                    <div class="history__desc">
+                      <p>DarLab — это мультидисциплинарная лаборатория, объединяющая науку, технологии и креативные решения. Мы создаём интеллектуальные продукты, разрабатываем нестандартные подходы и сопровождаем проекты от идеи до результата.</p>
+                      <br>
+                      <p>Всё началось с идеи. Несколько увлечённых специалистов — учёные, исследователи, инженеры — захотели создать пространство, где наука и креатив работают вместе. Пространство, где можно было бы не просто решать задачи, а находить в них вдохновение.</p>
+                      <p>Так появился DarLab — лаборатория, где ценится не только точность формул, но и смелость мышления. Где эксперименты становятся шагами вперёд, а каждый проект — возможностью изменить что-то к лучшему.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- <svg class="back back_1" width="678" height="1294" viewBox="0 0 678 1294" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1024_11358)">
+        <path d="M292.244 25.3486C259.177 -7.97324 204.933 -8.44007 175.443 28.0853C65.6796 164.035 4.69228 333.982 4.01484 510.381C3.22805 715.259 83.8611 912.059 228.176 1057.49C372.49 1202.91 568.664 1285.06 773.543 1285.84C949.942 1286.52 1120.35 1226.84 1257.14 1118.12C1293.89 1088.91 1293.84 1034.67 1260.77 1001.35L1162.87 902.682C1129.8 869.361 1076.31 869.937 1037.52 896.373C960.614 948.778 869.1 977.207 774.729 976.844C651.802 976.372 534.098 927.087 447.509 839.831C360.92 752.574 312.54 634.495 313.013 511.568C313.375 417.197 342.506 325.904 395.5 249.404C422.233 210.815 423.22 157.335 390.153 124.013L292.244 25.3486Z" fill="#F3A1BA"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_1024_11358" x="0.00927734" y="0.51709" width="1289.15" height="1293.33" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1024_11358"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1024_11358" result="shape"/>
+        </filter>
+        </defs>
+      </svg> -->
+    </main>
+
+    @@include('html/modals.html')
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  @@include('html/head.html', { "title": "Главная" })
+  @@include('html/head.html', { "title": "Вход в личный кабинет" })
   <body>
     @@include('html/header.html')
 
-    <main class="page-default">
+    <main class="page-default page-login">
       <svg class="back back_1" width="386" height="315" viewBox="0 0 386 315" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_3001_6928)">
           <path d="M128.822 -197.934C101.006 -220.374 59.606 -216.205 42.9272 -184.596C12.0843 -126.144 -1.00279 -59.3938 6.12997 7.27898C15.5762 95.5757 59.7112 176.503 128.826 232.259C197.941 288.015 286.373 314.031 374.67 304.585C441.343 297.452 503.814 270.541 554.419 228.031C581.784 205.043 577.1 163.698 549.284 141.258L519.718 117.407C491.901 94.9668 451.381 100.838 420.11 118.142C400.755 128.852 379.283 135.725 356.862 138.124C312.713 142.847 268.497 129.838 233.939 101.961C199.382 74.0828 177.315 33.6188 172.592 -10.5295C170.193 -32.9513 172.368 -55.3906 178.741 -76.5732C189.038 -110.797 186.205 -151.643 158.388 -174.083L128.822 -197.934Z" fill="#F3A1BA"/>
@@ -22,14 +22,7 @@
           </filter>
         </defs>
       </svg>
-      <section class="breadcrumbs section-first section-hidden">
-        <div class="container">
-          <div class="breadcrumbs__container breadcrumbs__list">
-            <a href="/">Главная</a>
-            <span>Вход в личный кабинет пользователя</span>
-          </div>
-        </div>
-      </section>
+      @@include('html/breadcrumbs.html', { "title": "Вход в личный кабинет пользователя" })
       <section class="login section-pad section-hidden">
         <div class="container">
           <div class="login__container">

@@ -1,8 +1,5 @@
-// Основной модуль
 import gulp from "gulp";
-// Импорт путей
 import { path } from "./gulp/config/path.js";
-// Импорт общих плагинов 
 import { plugins } from "./gulp/config/plugins.js";
 
 // Передает значения в глобальную переменную
@@ -27,7 +24,7 @@ function watcher() {
   gulp.watch(path.watch.files, copy);
   gulp.watch(path.watch.html, html);
   gulp.watch(path.watch.scss, scss);
-  gulp.watch(path.watch.js, js);
+  gulp.watch([path.watch.js, `!${path.srcFolder}/js/background.js`], js);
   gulp.watch(path.watch.images, images);
 }
 
