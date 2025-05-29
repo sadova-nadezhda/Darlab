@@ -814,7 +814,7 @@ span.flatpickr-weekday {
 
 .page-hero .back_2 {
   right: 0;
-  top: 28%;
+  top: 12%;
   width: calc(838 * var(--width-multiplier));
   height: calc(1351 * var(--width-multiplier));
 }
@@ -2348,6 +2348,11 @@ span.flatpickr-weekday {
   margin-top: calc(16 * var(--width-multiplier));
 }
 
+.hero-stock {
+  position: relative;
+  padding-left: calc(32 * var(--width-multiplier));
+}
+
 .hero-stock__card {
   display: flex;
   width: -moz-max-content;
@@ -2413,6 +2418,28 @@ span.flatpickr-weekday {
   background-color: var(--primary-yellow, #F3C10B);
 }
 
+.hero-pagination.swiper-pagination-vertical {
+  position: absolute;
+  top: unset;
+  right: unset;
+  left: 0;
+  bottom: 0;
+  transform: translate(0);
+}
+
+.hero-pagination .swiper-pagination-bullet {
+  height: calc(14 * var(--width-multiplier));
+  width: calc(4 * var(--width-multiplier));
+  border-radius: calc(50 * var(--width-multiplier));
+  opacity: 1;
+  background-color: var(--white, #FFFFFF);
+  transition: background-color 0.3s ease-out;
+}
+
+.hero-pagination .swiper-pagination-bullet-active {
+  background-color: var(--dark, #020304);
+}
+
 .about-page__top {
   display: flex;
   flex-wrap: wrap;
@@ -2464,6 +2491,10 @@ span.flatpickr-weekday {
 
 .price__slider .swiper-wrapper {
   align-items: stretch;
+}
+
+.price__slider .swiper-slide {
+  min-height: calc(200 * var(--width-multiplier));
 }
 
 .price__slider .swiper-slide:not(.price-card) {
@@ -2539,6 +2570,10 @@ span.flatpickr-weekday {
   line-height: 1;
 }
 
+.price__button {
+  min-width: calc(200 * var(--width-multiplier));
+}
+
 .price__button:hover {
   background-color: var(--dark-green, #225E2E);
 }
@@ -2548,7 +2583,7 @@ span.flatpickr-weekday {
   align-items: stretch;
 }
 
-.benefits__cards {
+.benefits__container .swiper-wrapper {
   display: grid;
   grid-template-rows: calc(296 * var(--width-multiplier)) calc(296 * var(--width-multiplier));
   grid-template-columns: repeat(auto-fill, 33.3vw);
@@ -2663,6 +2698,22 @@ span.flatpickr-weekday {
   line-height: calc(90 * var(--width-multiplier));
   text-transform: uppercase;
   z-index: 2;
+}
+
+.benefits-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefits-pagination .swiper-pagination-bullet {
+  border-radius: calc(50 * var(--width-multiplier));
+  background: var(--dark-green, #225E2E);
+  transition: width 0.3s ease-out;
+}
+
+.benefits-pagination .swiper-pagination-bullet-active {
+  width: calc(14 * var(--width-multiplier));
 }
 
 .teams__slider {
@@ -3620,9 +3671,7 @@ span.flatpickr-weekday {
   }
 
   .page-hero .back_2 {
-    top: 60%;
-    width: calc(250 * var(--width-multiplier));
-    height: calc(405 * var(--width-multiplier));
+    display: none;
   }
 
   .pagination > * {
@@ -3762,7 +3811,7 @@ span.flatpickr-weekday {
   }
 
   .hero__slider {
-    height: calc(160 * var(--width-multiplier));
+    height: calc(170 * var(--width-multiplier));
   }
 
   .hero__title svg {
@@ -3798,17 +3847,17 @@ span.flatpickr-weekday {
   }
 
   .hero-stock__img {
-    min-width: calc(100 * var(--width-multiplier));
-    width: calc(100 * var(--width-multiplier));
+    min-width: calc(120 * var(--width-multiplier));
+    width: calc(120 * var(--width-multiplier));
   }
 
   .hero-stock__box {
-    gap: calc(16 * var(--width-multiplier));
-    padding: calc(16 * var(--width-multiplier));
+    gap: calc(12 * var(--width-multiplier));
+    padding: calc(12 * var(--width-multiplier));
   }
 
   .hero-stock__group {
-    gap: calc(16 * var(--width-multiplier));
+    gap: calc(12 * var(--width-multiplier));
   }
 
   .hero-stock__caption {
@@ -3821,6 +3870,30 @@ span.flatpickr-weekday {
 
   .hero-stock__button {
     display: none;
+  }
+
+  .hero-stock {
+    padding-left: 0;
+    padding-bottom: calc(24 * var(--width-multiplier));
+  }
+
+  .hero-pagination.swiper-pagination-vertical {
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(8 * var(--width-multiplier));
+  }
+
+  .hero-pagination .swiper-pagination-bullet {
+    height: calc(4 * var(--width-multiplier));
+    width: calc(14 * var(--width-multiplier));
+    background-color: var(--light-back, #F0F1F5);
+  }
+
+  .hero-pagination .swiper-pagination-bullet-active {
+    background-color: var(--dark, #020304);
   }
 
   .hero {
@@ -3840,12 +3913,18 @@ span.flatpickr-weekday {
     padding: calc(16 * var(--width-multiplier));
   }
 
-  .price__button {
-    width: 100%;
+  .benefits__container .swiper-wrapper {
+    display: flex;
   }
 
-  .benefits__cards {
-    grid-template-columns: 1fr;
+  .benefits__container {
+    flex-direction: column;
+  }
+
+  .benefits-card {
+    min-width: 100%;
+    width: 100%;
+    padding: calc(16 * var(--width-multiplier));
   }
 
   .benefits-card_lg .benefits-card__num {
@@ -3867,6 +3946,8 @@ span.flatpickr-weekday {
     display: flex;
     flex-direction: column;
     gap: 0;
+    min-width: 100%;
+    width: 100%;
     border-radius: 0 0 0 calc(24 * var(--width-multiplier));
   }
 
@@ -3888,10 +3969,6 @@ span.flatpickr-weekday {
     top: calc(24 * var(--width-multiplier));
     bottom: calc(24 * var(--width-multiplier));
     height: calc(100% - 48 * var(--width-multiplier));
-  }
-
-  .benefits-card {
-    padding: calc(16 * var(--width-multiplier));
   }
 
   .benefits__logo {

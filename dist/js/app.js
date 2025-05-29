@@ -46,7 +46,6 @@ function initBenefitsAnimation() {
   if (!benefitsSection) return;
 
   const pinWrap = benefitsSection.querySelector(".pin-wrap");
-  const cards = benefitsSection.querySelectorAll(".benefits-card");
   const cardImages = benefitsSection.querySelectorAll(".benefits-card__img");
 
   // Анимация для всего блока (горизонтальный параллакс)
@@ -55,7 +54,7 @@ function initBenefitsAnimation() {
     ease: "none",
     scrollTrigger: {
       trigger: benefitsSection,
-      start: "top 15%",
+      start: "top 12%",
       end: "+=2000", // Увеличиваем область прокрутки для анимации
       scrub: 1, 
       pin: true,
@@ -84,6 +83,7 @@ function initBenefitsAnimation() {
 window.addEventListener("load", function () {
   const lang = document.documentElement.lang || 'en';
   const header = document.querySelector("header");
+  const isDesktop = window.innerWidth >= 981;
   
   // Обработчик скролла
   const handleScroll = () => {
@@ -514,10 +514,10 @@ window.addEventListener("load", function () {
       direction: "vertical",
       spaceBetween: 16,
       loop: true,
-      autoplay: { 
-        delay: 2500, 
-        disableOnInteraction: false 
-      },
+      // autoplay: { 
+      //   delay: 2500, 
+      //   disableOnInteraction: false 
+      // },
       pagination: { 
         el: ".hero-pagination" 
       },
@@ -614,7 +614,15 @@ window.addEventListener("load", function () {
 
   // GSAP 
 
-  initBenefitsAnimation()
+  if (isDesktop) {
+    initBenefitsAnimation();
+  } else {
+    new Swiper(".benefitsSwiper", {
+      pagination: {
+        el: ".benefits-pagination",
+      },
+    });
+  }
 
   // Modal
 
