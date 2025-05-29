@@ -2415,6 +2415,11 @@
       padding: calc(14 * var(--width-multiplier));
       border-radius: calc(18 * var(--width-multiplier));
       box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
+      &:hover {
+        .post-aside__caption {
+          color: var(--green, $green);
+        }
+      }
     }
     &__date {
       color: rgba(2, 3, 4, 0.50);
@@ -2426,6 +2431,7 @@
       font-family: Gilroy;
       font-weight: 600;
       line-height: 1.2em;
+      transition: color 0.3s ease-out;
     }
     &__txt {
       display: -webkit-box;
@@ -2459,6 +2465,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease-out;
       }
       @media(max-width: 980px) {
         min-height: unset;
@@ -2514,9 +2521,24 @@
         min-width: calc(24 * var(--width-multiplier));
         width: calc(24 * var(--width-multiplier));
         height: calc(24 * var(--width-multiplier));
+        transition: transform 0.3s ease-out;
       }
       @media(max-width: 980px) {
         display: none;
+      }
+    }
+    &:hover {
+      .stock-card__icon {
+        svg {
+          transform: scale(-1);
+        }
+      }
+    }
+    &:hover:not(.new) {
+      .stock-card__img {
+        img {
+          transform: scale(1.1);
+        }
       }
     }
     @media(max-width: 980px) {
@@ -2690,11 +2712,13 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease-out;
       }
     }
     &__caption {
       font-family: Gilroy;
       line-height: 1.2em;
+      transition: color 0.3s ease-out;
     }
     &__txt {
       display: -webkit-box;
@@ -2704,6 +2728,16 @@
       text-overflow: ellipsis;
       font-size: calc(16 * var(--width-multiplier));
       line-height: 1.2em;
+    }
+    &:hover {
+      .news-card__img {
+        img {
+          transform: scale(1.1);
+        }
+      }
+      .news-card__caption {
+        color: var(--green, $green);
+      }
     }
     @media(max-width: 980px) {
       gap: calc(16 * var(--width-multiplier));

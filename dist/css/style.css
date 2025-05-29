@@ -3073,6 +3073,10 @@ span.flatpickr-weekday {
   box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
 }
 
+.post-aside__card:hover .post-aside__caption {
+  color: var(--green, #348744);
+}
+
 .post-aside__date {
   color: rgba(2, 3, 4, 0.5);
   font-size: calc(14 * var(--width-multiplier));
@@ -3084,6 +3088,7 @@ span.flatpickr-weekday {
   font-family: Gilroy;
   font-weight: 600;
   line-height: 1.2em;
+  transition: color 0.3s ease-out;
 }
 
 .post-aside__txt {
@@ -3117,6 +3122,7 @@ span.flatpickr-weekday {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: transform 0.3s ease-out;
 }
 
 .stock-card__info {
@@ -3173,6 +3179,15 @@ span.flatpickr-weekday {
   min-width: calc(24 * var(--width-multiplier));
   width: calc(24 * var(--width-multiplier));
   height: calc(24 * var(--width-multiplier));
+  transition: transform 0.3s ease-out;
+}
+
+.stock-card:hover .stock-card__icon svg {
+  transform: scale(-1);
+}
+
+.stock-card:hover:not(.new) .stock-card__img img {
+  transform: scale(1.1);
 }
 
 .stock-page__cards {
@@ -3320,11 +3335,13 @@ span.flatpickr-weekday {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: transform 0.3s ease-out;
 }
 
 .news-card__caption {
   font-family: Gilroy;
   line-height: 1.2em;
+  transition: color 0.3s ease-out;
 }
 
 .news-card__txt {
@@ -3335,6 +3352,14 @@ span.flatpickr-weekday {
   text-overflow: ellipsis;
   font-size: calc(16 * var(--width-multiplier));
   line-height: 1.2em;
+}
+
+.news-card:hover .news-card__img img {
+  transform: scale(1.1);
+}
+
+.news-card:hover .news-card__caption {
+  color: var(--green, #348744);
 }
 
 .news-page__cards {
