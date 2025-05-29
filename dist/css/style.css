@@ -494,11 +494,22 @@ span.flatpickr-weekday {
 }
 
 .header__menu a {
-  transition: color 0.3s ease-out;
+  position: relative;
 }
 
-.header__menu a:hover {
-  color: var(--dark-green, #225E2E);
+.header__menu a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--dark, #020304);
+  transition: width 0.3s ease-out;
+}
+
+.header__menu a:hover::before {
+  width: 100%;
 }
 
 .header__search {

@@ -81,9 +81,21 @@
     align-items: center;
     gap: calc(24 * var(--width-multiplier));
     a {
-      transition: color 0.3s ease-out;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background-color: var(--dark, $dark);
+        transition: width 0.3s ease-out;
+      }
       &:hover {
-        color: var(--dark-green, $dark-green);
+        &::before {
+          width: 100%;
+        }
       }
     }
     @media (max-width: 980px) {
