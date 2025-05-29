@@ -3316,6 +3316,22 @@ span.flatpickr-weekday {
   gap: calc(24 * var(--width-multiplier));
 }
 
+.documents__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(24 * var(--width-multiplier));
+}
+
+.documents-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(16 * var(--width-multiplier));
+  padding: calc(14 * var(--width-multiplier)) calc(24 * var(--width-multiplier));
+  border-radius: calc(14 * var(--width-multiplier));
+  background-color: var(--light-back, #F0F1F5);
+}
+
 .modals {
   position: fixed;
   top: 0;

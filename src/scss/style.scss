@@ -2710,6 +2710,23 @@
   }
 }
 
+.documents {
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(24 * var(--width-multiplier));
+  }
+  &-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(16 * var(--width-multiplier));
+    padding: calc(14 * var(--width-multiplier)) calc(24 * var(--width-multiplier));
+    border-radius: calc(14 * var(--width-multiplier));
+    background-color: var(--light-back, $light-back);
+  }
+}
+
 // Modals
 
 .modals {
