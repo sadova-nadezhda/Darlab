@@ -756,6 +756,7 @@ span.flatpickr-weekday {
   position: relative;
   padding-right: calc(15 * var(--width-multiplier));
   margin-right: calc(10 * var(--width-multiplier));
+  transition: color 0.3s ease-out;
 }
 
 .breadcrumbs__list a::after {
@@ -769,6 +770,10 @@ span.flatpickr-weekday {
   border-radius: 100%;
   color: #313742;
   background-color: #313742;
+}
+
+.breadcrumbs__list a:hover {
+  color: var(--dark-green, #225E2E);
 }
 
 .page-default {
@@ -3381,6 +3386,26 @@ span.flatpickr-weekday {
   padding: calc(14 * var(--width-multiplier)) calc(24 * var(--width-multiplier));
   border-radius: calc(14 * var(--width-multiplier));
   background-color: var(--light-back, #F0F1F5);
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.documents-card svg {
+  min-width: calc(24 * var(--width-multiplier));
+  width: calc(24 * var(--width-multiplier));
+  height: calc(24 * var(--width-multiplier));
+}
+
+.documents-card path {
+  transition: fill 0.3s ease-out;
+}
+
+.documents-card:hover {
+  color: var(--white, #FFFFFF);
+  background-color: var(--dark-green, #225E2E);
+}
+
+.documents-card:hover path {
+  fill: var(--white, #FFFFFF);
 }
 
 .modals {
@@ -4118,6 +4143,11 @@ span.flatpickr-weekday {
   }
 
   .news-other__cards {
+    grid-template-columns: 1fr;
+    gap: calc(20 * var(--width-multiplier));
+  }
+
+  .documents__cards {
     grid-template-columns: 1fr;
     gap: calc(20 * var(--width-multiplier));
   }
