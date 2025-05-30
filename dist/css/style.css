@@ -838,6 +838,34 @@ span.flatpickr-weekday {
   height: calc(1351 * var(--width-multiplier));
 }
 
+.page-post .back-1 {
+  left: 0;
+  top: 0;
+  width: calc(484 * var(--width-multiplier));
+  height: calc(598 * var(--width-multiplier));
+}
+
+.page-post .back-2 {
+  right: 0;
+  top: calc(540 * var(--width-multiplier));
+  width: calc(447 * var(--width-multiplier));
+  height: calc(1482 * var(--width-multiplier));
+}
+
+.page-post-inner .back-1 {
+  left: 0;
+  top: 0;
+  width: calc(276 * var(--width-multiplier));
+  height: calc(547 * var(--width-multiplier));
+}
+
+.page-post-inner .back-2 {
+  right: 0;
+  bottom: calc(312 * var(--width-multiplier));
+  width: calc(463 * var(--width-multiplier));
+  height: calc(1505 * var(--width-multiplier));
+}
+
 .page-faq .back-1 {
   right: 0;
   top: 0;
@@ -3123,6 +3151,7 @@ span.flatpickr-weekday {
   gap: calc(20 * var(--width-multiplier));
   padding: calc(14 * var(--width-multiplier));
   border-radius: calc(18 * var(--width-multiplier));
+  background-color: var(--white, #FFFFFF);
   box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -3161,6 +3190,7 @@ span.flatpickr-weekday {
   gap: calc(24 * var(--width-multiplier));
   padding: calc(24 * var(--width-multiplier));
   border-radius: calc(20 * var(--width-multiplier));
+  background-color: var(--white, #FFFFFF);
   box-shadow: 0px calc(4 * var(--width-multiplier)) calc(4 * var(--width-multiplier)) 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -3986,6 +4016,26 @@ span.flatpickr-weekday {
 
   .page-hero .back_2 {
     display: none;
+  }
+
+  .page-post .back-1 {
+    width: calc(338 * var(--width-multiplier));
+    height: calc(418 * var(--width-multiplier));
+  }
+
+  .page-post .back-2 {
+    width: calc(312 * var(--width-multiplier));
+    height: calc(1037 * var(--width-multiplier));
+  }
+
+  .page-post-inner .back-1 {
+    width: calc(193 * var(--width-multiplier));
+    height: calc(382 * var(--width-multiplier));
+  }
+
+  .page-post-inner .back-2 {
+    width: calc(324 * var(--width-multiplier));
+    height: calc(1053 * var(--width-multiplier));
   }
 
   .page-faq .back-1 {
