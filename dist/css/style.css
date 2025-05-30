@@ -852,6 +852,20 @@ span.flatpickr-weekday {
   height: calc(1045 * var(--width-multiplier));
 }
 
+.page-contacts .back-1 {
+  right: 0;
+  top: 0;
+  width: calc(386 * var(--width-multiplier));
+  height: calc(315 * var(--width-multiplier));
+}
+
+.page-contacts .back-2 {
+  left: 0;
+  bottom: -25%;
+  width: calc(458 * var(--width-multiplier));
+  height: calc(894 * var(--width-multiplier));
+}
+
 .page-cabinet {
   position: relative;
   background-color: var(--back, #E9EEEA);
@@ -3966,6 +3980,17 @@ span.flatpickr-weekday {
     height: calc(730 * var(--width-multiplier));
   }
 
+  .page-contacts .back-1 {
+    width: calc(250 * var(--width-multiplier));
+    height: calc(200 * var(--width-multiplier));
+  }
+
+  .page-contacts .back-2 {
+    bottom: -28%;
+    width: calc(320 * var(--width-multiplier));
+    height: calc(625 * var(--width-multiplier));
+  }
+
   .pagination > * {
     width: calc(32 * var(--width-multiplier));
     height: calc(32 * var(--width-multiplier));
@@ -4448,6 +4473,10 @@ span.flatpickr-weekday {
     display: contents;
   }
 
+  .contacts__title {
+    order: -1;
+  }
+
   .contacts__socials {
     order: 1;
     justify-content: space-between;
@@ -4465,7 +4494,7 @@ span.flatpickr-weekday {
   }
 
   .contacts__img {
-    order: 1;
+    order: -1;
     height: calc(220 * var(--width-multiplier));
   }
 
