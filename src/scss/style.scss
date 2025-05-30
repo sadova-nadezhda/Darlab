@@ -168,6 +168,30 @@
       }
     }
   }
+  &-documents {
+    .back {
+      &-1 {
+        right: 0;
+        top: 0;
+        width: calc(386 * var(--width-multiplier));
+        height: calc(315 * var(--width-multiplier));
+        @media(max-width: 980px) {
+          width: calc(250 * var(--width-multiplier));
+          height: calc(200 * var(--width-multiplier));
+        }
+      }
+      &-2 {
+        left: 0;
+        top: calc(290 * var(--width-multiplier));
+        width: calc(386 * var(--width-multiplier));
+        height: calc(903 * var(--width-multiplier));
+        @media(max-width: 980px) {
+          width: calc(250 * var(--width-multiplier));
+          height: calc(615 * var(--width-multiplier));
+        }
+      }
+    }
+  }
   &-contacts {
     .back {
       &-1 {
@@ -2958,6 +2982,7 @@
 }
 
 .documents {
+  padding-bottom: calc(160 * var(--width-multiplier));
   &__cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2991,6 +3016,9 @@
         fill: var(--white, $white);
       }
     }
+  }
+  @media(max-width: 980px) {
+    padding: calc(64 * var(--width-multiplier)) 0;
   }
 }
 
