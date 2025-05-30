@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Карта лабораторий</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250530160009">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250530160009" />
-  <link rel="stylesheet" href="css/style.css?_v=20250530160009" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250530175610">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250530175610" />
+  <link rel="stylesheet" href="css/style.css?_v=20250530175610" />
 </head>
 
   <body>
@@ -59,6 +59,23 @@
 
 
     <main class="page-default page-map">
+      <svg class="back back-1" width="523" height="497" viewBox="0 0 523 497" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1049_9853)">
+        <path d="M168.099 -173.843C131.562 -203.318 77.1825 -197.843 55.2747 -156.324C14.7622 -79.5463 -2.4278 8.13105 6.94122 95.7065C19.3489 211.685 77.3208 317.985 168.104 391.221C258.887 464.456 375.044 498.629 491.023 486.222C578.598 476.853 660.655 441.504 727.125 385.667C763.069 355.472 756.918 301.165 720.38 271.69L681.545 240.361C645.008 210.886 591.783 218.597 550.708 241.327C525.285 255.395 497.082 264.422 467.631 267.572C409.642 273.776 351.563 256.69 306.172 220.072C260.78 183.454 231.794 130.304 225.59 72.3149C222.44 42.8637 225.296 13.3894 233.668 -14.4343C247.193 -59.3877 243.472 -113.039 206.934 -142.514L168.099 -173.843Z" fill="#F3A1BA"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_1049_9853" x="0.444336" y="-192.405" width="754.703" height="689.124" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1049_9853"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1049_9853" result="shape"/>
+        </filter>
+        </defs>
+      </svg>
       <section class="breadcrumbs section-first section-hidden">
   <div class="container">
     <div class="breadcrumbs__container breadcrumbs__list">
@@ -71,9 +88,59 @@
         <div class="container">
           <div class="map__caontainer">
             <h1 class="map__title title-indent">Карта пунктов забора</h1>
+            <div class="map__wrap">
+              <div class="map__info">
+                <div class="map__group map__branch">
+                  <span class="map__caption">DarLab Астана</span>
+                  <div id="address" class="map__item map__address">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14.0856 18.0254L13.4954 17.5626L14.0856 18.0254ZM9.91441 18.0254L9.32423 18.4882L9.91441 18.0254ZM12 19.7541V19.0041V19.7541ZM18 10.4565H17.25C17.25 11.3246 16.7922 12.5191 16.0396 13.8497C15.3036 15.1509 14.3503 16.4724 13.4954 17.5626L14.0856 18.0254L14.6758 18.4882C15.5532 17.3693 16.5571 15.9815 17.3452 14.5882C18.1167 13.2242 18.75 11.7388 18.75 10.4565H18ZM9.91441 18.0254L10.5046 17.5626C9.6497 16.4724 8.6964 15.1509 7.96039 13.8497C7.20778 12.5191 6.75 11.3246 6.75 10.4565H6H5.25C5.25 11.7388 5.88326 13.2242 6.65478 14.5882C7.44289 15.9815 8.44679 17.3693 9.32423 18.4882L9.91441 18.0254ZM6 10.4565H6.75C6.75 7.25215 9.15135 4.75 12 4.75V4V3.25C8.22123 3.25 5.25 6.52921 5.25 10.4565H6ZM12 4V4.75C14.8486 4.75 17.25 7.25215 17.25 10.4565H18H18.75C18.75 6.52921 15.7788 3.25 12 3.25V4ZM14.0856 18.0254L13.4954 17.5626C13.0271 18.1598 12.7325 18.5313 12.4733 18.7668C12.2462 18.9731 12.1225 19.0041 12 19.0041V19.7541V20.5041C12.6074 20.5041 13.0746 20.247 13.4819 19.8771C13.857 19.5363 14.2403 19.0435 14.6758 18.4882L14.0856 18.0254ZM9.91441 18.0254L9.32423 18.4882C9.75968 19.0435 10.143 19.5363 10.5181 19.8771C10.9254 20.247 11.3926 20.5041 12 20.5041V19.7541V19.0041C11.8775 19.0041 11.7538 18.9731 11.5267 18.7668C11.2675 18.5313 10.9729 18.1598 10.5046 17.5626L9.91441 18.0254ZM9.75 10.75H9C9 12.4069 10.3431 13.75 12 13.75V13V12.25C11.1716 12.25 10.5 11.5784 10.5 10.75H9.75ZM12 13V13.75C13.6569 13.75 15 12.4069 15 10.75H14.25H13.5C13.5 11.5784 12.8284 12.25 12 12.25V13ZM14.25 10.75H15C15 9.09315 13.6569 7.75 12 7.75V8.5V9.25C12.8284 9.25 13.5 9.92157 13.5 10.75H14.25ZM12 8.5V7.75C10.3431 7.75 9 9.09315 9 10.75H9.75H10.5C10.5 9.92157 11.1716 9.25 12 9.25V8.5Z" fill="#020304"/>
+                    </svg>
+                    г. Астана, ул. Достык, д. 12, блок А
+                  </div>
+                </div>
+                <div class="map__group map__schedule">
+                  <span class="map__caption">График филиала</span>
+                  <ul class="map__datetime">
+                    <li id="hoursWeekdays" class="map__item">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 20C16.4107 20 20 16.4107 20 12C20 7.58934 16.4107 4 12 4C7.5893 4 4 7.58934 4 12C4 16.4107 7.58934 20 12 20ZM12 5.06665C15.824 5.06665 18.9334 8.17597 18.9334 12C18.9334 15.824 15.824 18.9334 12 18.9334C8.17597 18.9334 5.06665 15.824 5.06665 12C5.06665 8.17597 8.17602 5.06665 12 5.06665Z" fill="black"/>
+                        <path d="M14.3332 14.5495C14.4319 14.6295 14.5492 14.6669 14.6665 14.6669C14.8239 14.6669 14.9785 14.5975 15.0825 14.4669C15.2665 14.2375 15.2292 13.9015 14.9999 13.7175L12.5332 11.7442V7.73352C12.5332 7.44018 12.2932 7.2002 11.9999 7.2002C11.7065 7.2002 11.4666 7.44018 11.4666 7.73352V12.0002C11.4666 12.1629 11.5412 12.3149 11.6665 12.4162L14.3332 14.5495Z" fill="black"/>
+                      </svg>
+                      Пн-Пт: 8:00-20:00
+                    </li>
+                    <li id="hoursWeekends" class="map__item"> 
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 20C16.4107 20 20 16.4107 20 12C20 7.58934 16.4107 4 12 4C7.5893 4 4 7.58934 4 12C4 16.4107 7.58934 20 12 20ZM12 5.06665C15.824 5.06665 18.9334 8.17597 18.9334 12C18.9334 15.824 15.824 18.9334 12 18.9334C8.17597 18.9334 5.06665 15.824 5.06665 12C5.06665 8.17597 8.17602 5.06665 12 5.06665Z" fill="black"/>
+                        <path d="M14.3332 14.5495C14.4319 14.6295 14.5492 14.6669 14.6665 14.6669C14.8239 14.6669 14.9785 14.5975 15.0825 14.4669C15.2665 14.2375 15.2292 13.9015 14.9999 13.7175L12.5332 11.7442V7.73352C12.5332 7.44018 12.2932 7.2002 11.9999 7.2002C11.7065 7.2002 11.4666 7.44018 11.4666 7.73352V12.0002C11.4666 12.1629 11.5412 12.3149 11.6665 12.4162L14.3332 14.5495Z" fill="black"/>
+                      </svg>
+                      Сб-Вс: 10:00-17:00
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="map__frame" id="map"></div>
+            </div>
           </div>
         </div>
       </section>
+      <svg class="back back-2" width="499" height="665" viewBox="0 0 499 665" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1049_9855)">
+        <path d="M347.072 641.823C385.723 668.466 439.536 658.916 458.259 615.867C492.881 536.26 503.428 447.538 487.498 360.915C466.402 246.198 400.599 144.56 304.565 78.3601C208.53 12.1602 90.1316 -13.1789 -24.5853 7.91721C-111.208 23.8468 -190.373 65.2673 -252.455 125.946C-286.027 158.759 -275.808 212.449 -237.157 239.093L-196.075 267.412C-157.424 294.056 -104.93 282.362 -65.6816 256.608C-41.3888 240.667 -13.9447 229.545 15.1861 224.188C72.5446 213.639 131.744 226.309 179.761 259.409C227.778 292.509 260.68 343.328 271.228 400.686C276.585 429.817 275.953 459.423 269.698 487.797C259.592 533.641 267.339 586.86 305.99 613.504L347.072 641.823Z" fill="#F3A1BA"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_1049_9855" x="-276.724" y="0.662109" width="775.477" height="664.008" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1049_9855"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1049_9855" result="shape"/>
+        </filter>
+        </defs>
+      </svg>
     </main>
 
     <div class="modals">
@@ -239,14 +306,74 @@
   </div>
 </footer>
  
-    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250530160009"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js?_v=20250530160009"></script>
-<script src="js/app.js?_v=20250530160009"></script>
+
+
+     <script>
+      // Данные филиалов
+      const branches = [
+        {
+          name: "DarLab Астана",
+          lat: 51.1294,
+          lng: 71.4304,
+          address: "г. Астана, ул. Достык, д. 12, блок А",
+          hoursWeekdays: "Пн–Пт: 8:00–20:00",
+          hoursWeekends: "Сб–Вс: 10:00–17:00",
+        },
+        {
+          name: "DarLab Восток",
+          lat: 51.1370,
+          lng: 71.4800,
+          address: "г. Астана, ул. Абылай хана, д. 5",
+          hoursWeekdays: "Пн–Пт: 9:00–19:00",
+          hoursWeekends: "Сб–Вс: 11:00–16:00",
+        },
+        {
+          name: "DarLab Южный",
+          lat: 51.1150,
+          lng: 71.4250,
+          address: "г. Астана, пр. Туран, д. 25",
+          hoursWeekdays: "Пн–Пт: 8:30–18:30",
+          hoursWeekends: "Сб–Вс: 10:00–15:00",
+        }
+      ];
+
+      function initMap() {
+        const center = { lat: 51.1280, lng: 71.4450 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 13,
+          center: center
+        });
+
+        // Маркеры
+        branches.forEach(branch => {
+          const marker = new google.maps.Marker({
+            position: { lat: branch.lat, lng: branch.lng },
+            map: map,
+            title: branch.name
+          });
+
+          marker.addListener("click", () => {
+            updateSidebar(branch);
+          });
+        });
+      }
+
+      // Обновить инфу в сайдбаре
+      function updateSidebar(branch) {
+        document.getElementById("address").textContent = branch.address;
+        document.getElementById("hours-weekdays").textContent = branch.hoursWeekdays;
+        document.getElementById("hours-weekends").textContent = branch.hoursWeekends;
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250530175610"></script>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js?_v=20250530175610"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20250530175610"></script>
+<script src="js/app.js?_v=20250530175610"></script>
   </body>
 </html>
