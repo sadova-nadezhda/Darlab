@@ -584,32 +584,35 @@ span.flatpickr-weekday {
 .header__burger {
   position: relative;
   display: none;
-  width: calc(24 * var(--width-multiplier));
-  height: calc(24 * var(--width-multiplier));
+  width: calc(42 * var(--width-multiplier));
+  height: calc(42 * var(--width-multiplier));
+  border-radius: calc(4 * var(--width-multiplier));
+  background-color: var(--primary-green, #94B522);
   cursor: pointer;
 }
 
 .header__burger span {
   position: absolute;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: block;
   height: calc(2 * var(--width-multiplier));
-  width: 100%;
+  width: calc(24 * var(--width-multiplier));
   pointer-events: none;
-  background-color: var(--dark-green);
+  background-color: var(--white, #FFFFFF);
 }
 
 .header__burger span:nth-child(1) {
-  top: 0;
+  top: calc(10 * var(--width-multiplier));
 }
 
 .header__burger span:nth-child(2) {
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .header__burger span:nth-child(3) {
-  bottom: 0;
+  bottom: calc(10 * var(--width-multiplier));
 }
 
 .header.scroll {
@@ -3444,6 +3447,121 @@ span.flatpickr-weekday {
   fill: var(--white, #FFFFFF);
 }
 
+.contacts__container {
+  display: grid;
+  grid-template-columns: 1fr calc(806 * var(--width-multiplier));
+  gap: calc(46 * var(--width-multiplier));
+}
+
+.contacts__left {
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--width-multiplier));
+}
+
+.contacts__desc {
+  max-width: calc(340 * var(--width-multiplier));
+  font-size: calc(16 * var(--width-multiplier));
+}
+
+.contacts__socials {
+  display: flex;
+  align-items: center;
+  gap: calc(32 * var(--width-multiplier));
+  margin-top: auto;
+  font-size: calc(20 * var(--width-multiplier));
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.contacts__social {
+  position: relative;
+}
+
+.contacts__social::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--dark, #020304);
+  transition: width 0.3s ease-out;
+}
+
+.contacts__social:hover::before {
+  width: 100%;
+}
+
+.contacts__right {
+  display: flex;
+  flex-direction: column;
+  gap: calc(46 * var(--width-multiplier));
+}
+
+.contacts__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: calc(24 * var(--width-multiplier));
+       column-gap: calc(24 * var(--width-multiplier));
+  row-gap: calc(46 * var(--width-multiplier));
+}
+
+.contacts__card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--width-multiplier));
+}
+
+.contacts__card span {
+  color: rgba(2, 3, 4, 0.5);
+  font-size: calc(16 * var(--width-multiplier));
+  line-height: 1;
+}
+
+.contacts__group {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--width-multiplier));
+  max-width: calc(180 * var(--width-multiplier));
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.contacts__group a {
+  position: relative;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.contacts__group a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--dark, #020304);
+  transition: width 0.3s ease-out;
+}
+
+.contacts__group a:hover::before {
+  width: 100%;
+}
+
+.contacts__img {
+  height: calc(386 * var(--width-multiplier));
+  border-radius: calc(20 * var(--width-multiplier));
+  overflow: hidden;
+}
+
+.contacts__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .modals {
   position: fixed;
   top: 0;
@@ -4186,6 +4304,37 @@ span.flatpickr-weekday {
   .documents__cards {
     grid-template-columns: 1fr;
     gap: calc(20 * var(--width-multiplier));
+  }
+
+  .contacts__container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(32 * var(--width-multiplier));
+  }
+
+  .contacts__left {
+    display: contents;
+  }
+
+  .contacts__socials {
+    order: 1;
+    justify-content: space-between;
+    font-size: calc(18 * var(--width-multiplier));
+  }
+
+  .contacts__right {
+    display: contents;
+  }
+
+  .contacts__cards {
+    -moz-column-gap: calc(16 * var(--width-multiplier));
+         column-gap: calc(16 * var(--width-multiplier));
+    row-gap: calc(32 * var(--width-multiplier));
+  }
+
+  .contacts__img {
+    order: 1;
+    height: calc(220 * var(--width-multiplier));
   }
 
   .modal__top {

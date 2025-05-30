@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "Контакты" })
+  <body>
+    @@include('html/header.html')
+
+    <main class="page-default page-contacts">
+      @@include('html/breadcrumbs.html', { "title": "Контакты" })
+      <section class="contacts section-pad section-hidden">
+        <div class="container">
+          <div class="contacts__container">
+            <div class="contacts__left">
+              <h1 class="contacts__title">Контакты</h1>
+              <div class="contacts__desc">В частности, начало повседневной работы по формированию позиции не оставляет шанса для глубокомысленных рассуждений.</div>
+              <div class="contacts__socials">
+                <a class="contacts__social" href="" target="_blank" rel="nofollow">Instagram</a>
+                <a class="contacts__social" href="" target="_blank" rel="nofollow">Telegram</a>
+                <a class="contacts__social" href="" target="_blank" rel="nofollow">WhatsApp</a>
+              </div>
+            </div>
+            <div class="contacts__right">
+              <div class="contacts__cards">
+                <div class="contacts__card">
+                  <span>Общие вопросы</span>
+                  <div class="contacts__group">
+                    <a href="mailto:work@Darlab.work">work@Darlab.work</a>
+                    <a href="tel:+7 993 226 92 17">+7 993 226 92 17</a>
+                  </div>
+                </div>
+                <div class="contacts__card">
+                  <span>Карьера</span>
+                  <div class="contacts__group">
+                    <a href="mailto:work@Darlab.work">work@Darlab.work</a>
+                  </div>
+                </div>
+                <div class="contacts__card">
+                  <span>Сотрудничество</span>
+                  <div class="contacts__group">
+                    <a href="mailto:work@Darlab.work">work@Darlab.work</a>
+                    <a href="tel:+7 993 226 92 17">+7 993 226 92 17</a>
+                  </div>
+                </div>
+                <div class="contacts__card">
+                  <span>Адрес</span>
+                  <div class="contacts__group">
+                    <div>191118, г. Астана, Желтоксана 12-22</div>
+                  </div>
+                </div>
+              </div>
+              <div class="contacts__img">
+                <img src="@img/contacts.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

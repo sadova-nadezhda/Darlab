@@ -188,26 +188,29 @@
   &__burger {
     position: relative;
     display: none;
-    width: calc(24 * var(--width-multiplier));
-    height: calc(24 * var(--width-multiplier));
+    width: calc(42 * var(--width-multiplier));
+    height: calc(42 * var(--width-multiplier));
+    border-radius: calc(4 * var(--width-multiplier));
+    background-color: var(--primary-green, $primary-green);
     cursor: pointer;
     span {
       position: absolute;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
       display: block;
       height: calc(2 * var(--width-multiplier));
-      width: 100%;
+      width: calc(24 * var(--width-multiplier));
       pointer-events: none;
-      background-color: var(--dark-green);
+      background-color: var(--white, $white);
       &:nth-child(1){
-        top: 0;
+        top: calc(10 * var(--width-multiplier));
       }
       &:nth-child(2){
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
       }
       &:nth-child(3){
-        bottom: 0;
+        bottom: calc(10 * var(--width-multiplier));
       }
     }
     @media(max-width: 980px) {
