@@ -582,8 +582,13 @@ window.addEventListener("load", function () {
   const tabs = document.querySelector('.history-buttons .swiper-wrapper');
 
   const tabButtons = new Swiper('.history-buttons', {
-    slidesPerView: 11,
+    slidesPerView: 3,
     mousewheel: true,
+    breakpoints: { 
+      981: { 
+        slidesPerView: 11,
+      } 
+    }
   });
 
   if(tabs) {

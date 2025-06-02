@@ -2583,12 +2583,107 @@ span.flatpickr-weekday {
   width: 40%;
 }
 
-.about-page__box img {
+.about-page__box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: calc(434 * var(--width-multiplier));
-  width: 100%;
+  padding: calc(24 * var(--width-multiplier));
   border-radius: calc(20 * var(--width-multiplier));
+  overflow: hidden;
+}
+
+.about-page__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  z-index: -1;
+}
+
+.about-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--width-multiplier));
+  max-width: calc(512 * var(--width-multiplier));
+  padding: calc(20 * var(--width-multiplier));
+  border-radius: calc(20 * var(--width-multiplier));
+  color: var(--white, #FFFFFF);
+  background-color: var(--primary-green, #94B522);
+}
+
+.about-reviews__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(20 * var(--width-multiplier));
+}
+
+.about-reviews__top span {
+  font-size: calc(14 * var(--width-multiplier));
+  line-height: 1em;
+}
+
+.about-reviews__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(20 * var(--width-multiplier));
+}
+
+.about-reviews__txt {
+  max-width: calc(270 * var(--width-multiplier));
+  font-size: calc(14 * var(--width-multiplier));
+  line-height: 1.2em;
+}
+
+.about-reviews__box {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--width-multiplier));
+}
+
+.about-reviews__images {
+  display: flex;
+  align-items: center;
+}
+
+.about-reviews__images img {
+  width: calc(46 * var(--width-multiplier));
+  height: calc(46 * var(--width-multiplier));
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.about-reviews__images img:not(:first-of-type) {
+  margin-left: calc(-20 * var(--width-multiplier));
+}
+
+.about-reviews__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(46 * var(--width-multiplier));
+  height: calc(46 * var(--width-multiplier));
+  border-radius: 100%;
+  background-color: var(--white, #FFFFFF);
+}
+
+.about-reviews__link svg {
+  min-width: calc(24 * var(--width-multiplier));
+  width: calc(24 * var(--width-multiplier));
+  height: calc(24 * var(--width-multiplier));
+  transition: transform 0.3s ease-out;
+}
+
+.about-reviews:hover .about-reviews__link svg {
+  transform: scale(-1);
 }
 
 .price__wrap {
@@ -2987,10 +3082,6 @@ span.flatpickr-weekday {
   margin-bottom: calc(60 * var(--width-multiplier));
 }
 
-.history-buttons .swiper-wrapper {
-  border-bottom: 1px solid rgba(2, 3, 4, 0.5);
-}
-
 .history-buttons .swiper-slide {
   position: relative;
   display: flex;
@@ -2998,6 +3089,7 @@ span.flatpickr-weekday {
   width: -moz-max-content;
   width: max-content;
   padding: calc(12 * var(--width-multiplier)) calc(15 * var(--width-multiplier));
+  border-bottom: 1px solid rgba(2, 3, 4, 0.5);
   line-height: 1;
 }
 
@@ -4010,7 +4102,7 @@ span.flatpickr-weekday {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: calc(32 * var(--width-multiplier));
+    gap: calc(46 * var(--width-multiplier));
     min-height: 100vh;
     min-width: calc(320 * var(--width-multiplier));
     width: 100%;
@@ -4022,6 +4114,7 @@ span.flatpickr-weekday {
   .header__group:first-child {
     flex-direction: column;
     align-items: flex-start;
+    gap: calc(46 * var(--width-multiplier));
   }
 
   .header__group {
@@ -4029,6 +4122,7 @@ span.flatpickr-weekday {
   }
 
   .header__menu {
+    order: 1;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -4410,10 +4504,33 @@ span.flatpickr-weekday {
 
   .about-page__title {
     width: 100%;
+    font-size: calc(24 * var(--width-multiplier));
   }
 
   .about-page__desc {
     width: 100%;
+  }
+
+  .about-page__box {
+    height: calc(320 * var(--width-multiplier));
+    padding: calc(20 * var(--width-multiplier));
+  }
+
+  .about-reviews__top {
+    display: contents;
+  }
+
+  .about-reviews__bottom {
+    display: contents;
+  }
+
+  .about-reviews__box {
+    justify-content: flex-end;
+  }
+
+  .about-reviews {
+    gap: calc(16 * var(--width-multiplier));
+    padding: calc(16 * var(--width-multiplier));
   }
 
   .price-card {
@@ -4480,6 +4597,64 @@ span.flatpickr-weekday {
 
   .benefits__logo {
     display: none;
+  }
+
+  .teams__slider .swiper-wrapper {
+    padding-left: 0;
+  }
+
+  .teams-card__left img {
+    -o-object-position: 50% 10%;
+       object-position: 50% 10%;
+  }
+
+  .teams-card__left {
+    width: 100%;
+    height: calc(320 * var(--width-multiplier));
+  }
+
+  .teams-card__top,
+  .teams-card__bottom {
+    display: contents;
+  }
+
+  .teams-card__top {
+    gap: calc(16 * var(--width-multiplier));
+  }
+
+  .teams-card__bottom {
+    gap: calc(16 * var(--width-multiplier));
+  }
+
+  .teams-card__role,
+  .teams-card__name {
+    opacity: 0;
+  }
+
+  .teams-card__right {
+    width: 100%;
+    padding: calc(16 * var(--width-multiplier));
+    opacity: 1;
+  }
+
+  .teams-card.swiper-slide-active .teams-card__right {
+    width: 100%;
+    padding: calc(16 * var(--width-multiplier));
+  }
+
+  .teams-card {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+  }
+
+  .history-buttons {
+    margin-bottom: calc(32 * var(--width-multiplier));
+  }
+
+  .history-content .swiper-slide {
+    grid-template-columns: 1fr;
   }
 
   .post-inner__top {
