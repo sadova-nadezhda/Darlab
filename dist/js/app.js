@@ -556,21 +556,12 @@ window.addEventListener("load", function () {
     },
     teamsSwiper: {
       slidesPerView: 1,
-      spaceBetween: 16,
-      loop: true,
+      spaceBetween: 20,
+      // loop: true,
       initialSlide: 2,
-      slideToClickedSlide: true,
-      observer: true,
-      observeParents: true,
       pagination: {
         el: ".teams-pagination",
       },
-      breakpoints: {
-        981: { 
-          slidesPerView: "auto", 
-          spaceBetween: 20,
-        },
-      }
     }
   };
 
@@ -582,7 +573,7 @@ window.addEventListener("load", function () {
   const tabs = document.querySelector('.history-buttons .swiper-wrapper');
 
   const tabButtons = new Swiper('.history-buttons', {
-    slidesPerView: 3,
+    slidesPerView: 4,
     mousewheel: true,
     breakpoints: { 
       981: { 

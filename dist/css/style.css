@@ -2931,12 +2931,17 @@ span.flatpickr-weekday {
 }
 
 .teams__slider {
+  position: relative;
+  padding-left: calc(280 * var(--width-multiplier));
+  padding-bottom: calc(36 * var(--width-multiplier));
   border-radius: calc(20 * var(--width-multiplier));
   overflow: hidden;
 }
 
-.teams__slider .swiper-wrapper {
-  padding-left: 20%;
+.teams__slider .swiper {
+  width: calc(260 * var(--width-multiplier));
+  margin: 0;
+  overflow: visible;
 }
 
 .teams__slider .swiper-pagination-bullet {
@@ -2957,10 +2962,10 @@ span.flatpickr-weekday {
 .teams-card {
   display: flex;
   min-height: calc(436 * var(--width-multiplier));
-  width: -moz-max-content;
-  width: max-content;
+  width: calc(260 * var(--width-multiplier));
   border-radius: calc(20 * var(--width-multiplier));
   background-color: var(--light-back, #F0F1F5);
+  transition: width 0.3s ease-out;
 }
 
 .teams-card__left {
@@ -2970,7 +2975,8 @@ span.flatpickr-weekday {
   justify-content: space-between;
   gap: calc(16 * var(--width-multiplier));
   padding: calc(20 * var(--width-multiplier));
-  width: calc(250 * var(--width-multiplier));
+  min-width: calc(260 * var(--width-multiplier));
+  width: calc(260 * var(--width-multiplier));
 }
 
 .teams-card__left img {
@@ -2983,25 +2989,6 @@ span.flatpickr-weekday {
   border-radius: calc(20 * var(--width-multiplier));
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.teams-card__top,
-.teams-card__bottom {
-  display: flex;
-  flex-direction: column;
-}
-
-.teams-card__top {
-  gap: calc(18 * var(--width-multiplier));
-}
-
-.teams-card__bottom {
-  gap: calc(20 * var(--width-multiplier));
-}
-
-.teams-card__bottom h4 {
-  font-size: calc(18 * var(--width-multiplier));
-  font-weight: 600;
 }
 
 .teams-card__role,
@@ -3035,10 +3022,33 @@ span.flatpickr-weekday {
   flex-direction: column;
   justify-content: space-between;
   gap: calc(16 * var(--width-multiplier));
-  width: 0;
-  padding: 0;
+  width: calc(284 * var(--width-multiplier));
+  min-width: calc(284 * var(--width-multiplier));
+  padding: calc(26 * var(--width-multiplier));
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform, opacity;
   opacity: 0;
-  transition: width 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out 0.1s;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.teams-card__top,
+.teams-card__bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.teams-card__top {
+  gap: calc(18 * var(--width-multiplier));
+}
+
+.teams-card__bottom {
+  gap: calc(20 * var(--width-multiplier));
+}
+
+.teams-card__bottom h4 {
+  font-size: calc(18 * var(--width-multiplier));
+  font-weight: 600;
 }
 
 .teams-card__years {
@@ -3053,10 +3063,32 @@ span.flatpickr-weekday {
 }
 
 .teams-card__link {
+  position: relative;
+  width: -moz-max-content;
+  width: max-content;
   color: var(--green, #348744);
   font-size: calc(14 * var(--width-multiplier));
   font-weight: 600;
-  line-height: 1em;
+  line-height: 1.2em;
+}
+
+.teams-card__link::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--green, #348744);
+  transition: width 0.3s ease-out;
+}
+
+.teams-card__link:hover::before {
+  width: 100%;
+}
+
+.teams-card.swiper-slide-active {
+  width: calc(544 * var(--width-multiplier)) !important;
 }
 
 .teams-card.swiper-slide-active .teams-card__role,
@@ -3065,15 +3097,15 @@ span.flatpickr-weekday {
 }
 
 .teams-card.swiper-slide-active .teams-card__right {
-  width: calc(284 * var(--width-multiplier));
-  padding: calc(26 * var(--width-multiplier));
+  transform: scaleX(1);
   opacity: 1;
 }
 
 .teams-pagination {
+  position: absolute;
   display: flex;
   justify-content: center;
-  margin-top: calc(26 * var(--width-multiplier));
+  width: 100%;
 }
 
 .history-buttons {
@@ -4599,7 +4631,11 @@ span.flatpickr-weekday {
     display: none;
   }
 
-  .teams__slider .swiper-wrapper {
+  .teams__slider .swiper {
+    width: 100%;
+  }
+
+  .teams__slider {
     padding-left: 0;
   }
 
@@ -4613,19 +4649,6 @@ span.flatpickr-weekday {
     height: calc(320 * var(--width-multiplier));
   }
 
-  .teams-card__top,
-  .teams-card__bottom {
-    display: contents;
-  }
-
-  .teams-card__top {
-    gap: calc(16 * var(--width-multiplier));
-  }
-
-  .teams-card__bottom {
-    gap: calc(16 * var(--width-multiplier));
-  }
-
   .teams-card__role,
   .teams-card__name {
     opacity: 0;
@@ -4634,22 +4657,37 @@ span.flatpickr-weekday {
   .teams-card__right {
     width: 100%;
     padding: calc(16 * var(--width-multiplier));
+    transform: scaleX(1);
     opacity: 1;
   }
 
-  .teams-card.swiper-slide-active .teams-card__right {
-    width: 100%;
-    padding: calc(16 * var(--width-multiplier));
+  .teams-card__top,
+  .teams-card__bottom {
+    display: contents;
+  }
+
+  .teams-card.swiper-slide-active {
+    width: 100% !important;
   }
 
   .teams-card {
     flex-direction: column;
     width: 100%;
-    height: auto;
     min-height: unset;
   }
 
+  .history-buttons .swiper-slide::before {
+    width: calc(65 * var(--width-multiplier));
+    height: calc(65 * var(--width-multiplier));
+  }
+
+  .history-buttons .swiper-slide span {
+    font-size: calc(16 * var(--width-multiplier));
+  }
+
   .history-buttons {
+    padding-top: calc(14 * var(--width-multiplier));
+    padding-bottom: calc(14 * var(--width-multiplier));
     margin-bottom: calc(32 * var(--width-multiplier));
   }
 
