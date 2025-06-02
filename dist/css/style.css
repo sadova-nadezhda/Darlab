@@ -838,6 +838,24 @@ span.flatpickr-weekday {
   height: calc(1351 * var(--width-multiplier));
 }
 
+.page-about .back {
+  z-index: -2;
+}
+
+.page-about .back-1 {
+  left: 0;
+  bottom: -8%;
+  width: calc(406 * var(--width-multiplier));
+  height: calc(675 * var(--width-multiplier));
+}
+
+.page-about .back-2 {
+  right: 0;
+  top: calc(516 * var(--width-multiplier));
+  width: calc(678 * var(--width-multiplier));
+  height: calc(1294 * var(--width-multiplier));
+}
+
 .page-post .back-1 {
   left: 0;
   top: 0;
@@ -4230,6 +4248,17 @@ span.flatpickr-weekday {
 
   .page-hero .back_2 {
     display: none;
+  }
+
+  .page-about .back-1 {
+    bottom: -6%;
+    width: calc(203 * var(--width-multiplier));
+    height: calc(325 * var(--width-multiplier));
+  }
+
+  .page-about .back-2 {
+    width: calc(250 * var(--width-multiplier));
+    height: calc(520 * var(--width-multiplier));
   }
 
   .page-post .back-1 {

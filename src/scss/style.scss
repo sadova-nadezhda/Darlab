@@ -144,6 +144,32 @@
       }
     }
   }
+  &-about {
+    .back {
+      z-index: -2;
+      &-1 {
+        left: 0;
+        bottom: -8%;
+        width: calc(406 * var(--width-multiplier));
+        height: calc(675 * var(--width-multiplier));
+        @media(max-width: 980px) {
+          bottom: -6%;
+          width: calc(203 * var(--width-multiplier));
+          height: calc(325 * var(--width-multiplier));
+        }
+      }
+      &-2 {
+        right: 0;
+        top: calc(516 * var(--width-multiplier));
+        width: calc(678 * var(--width-multiplier));
+        height: calc(1294 * var(--width-multiplier));
+        @media(max-width: 980px) {
+          width: calc(250 * var(--width-multiplier));
+          height: calc(520 * var(--width-multiplier));
+        }
+      }
+    }
+  }
   &-post {
     .back {
       &-1 {
