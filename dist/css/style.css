@@ -2720,6 +2720,10 @@ span.flatpickr-weekday {
   pointer-events: all;
 }
 
+.about__pane.active .about__img {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .about__pane.active .about__desc {
   transform: translateY(0);
   opacity: 1;
@@ -2730,16 +2734,36 @@ span.flatpickr-weekday {
   opacity: 1;
 }
 
+.about__pane.active .icon {
+  transform: rotate(0);
+  opacity: 1;
+}
+
+.about__pane .icon {
+  position: absolute;
+  right: calc(40 * var(--width-multiplier));
+  top: calc(80 * var(--width-multiplier));
+  width: calc(80 * var(--width-multiplier));
+  height: calc(80 * var(--width-multiplier));
+  -o-object-fit: contain;
+     object-fit: contain;
+  z-index: 1;
+  transform: rotate(-90deg);
+  opacity: 0;
+  transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.3s;
+}
+
 .about__img {
   position: absolute;
   top: calc(50% - 190 * var(--width-multiplier));
   left: 50%;
   width: calc(260 * var(--width-multiplier));
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8);
   border-radius: 100%;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  transition: transform 0.3s ease-out;
 }
 
 .about__img img {
@@ -4329,6 +4353,15 @@ span.flatpickr-weekday {
     margin-top: 0;
     margin-left: auto;
     margin-right: calc(-50 * var(--width-multiplier));
+  }
+
+  .about__pane .icon {
+    right: unset;
+    top: unset;
+    left: calc(160 * var(--width-multiplier));
+    bottom: calc(80 * var(--width-multiplier));
+    width: calc(110 * var(--width-multiplier));
+    height: calc(110 * var(--width-multiplier));
   }
 
   .about__pane {

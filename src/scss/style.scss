@@ -2156,6 +2156,9 @@
     &.active {
       opacity: 1;
       pointer-events: all;
+      .about__img {
+        transform: translate(-50%, -50%) scale(1);
+      }
       .about__desc {
         transform: translateY(0);
         opacity: 1;
@@ -2163,6 +2166,30 @@
       .about__button {
         transform: translateY(0);
         opacity: 1;
+      }
+      .icon {
+        transform: rotate(0);
+        opacity: 1;
+      }
+    }
+    .icon {
+      position: absolute;
+      right: calc(40 * var(--width-multiplier));
+      top: calc(80 * var(--width-multiplier));
+      width: calc(80 * var(--width-multiplier));
+      height: calc(80 * var(--width-multiplier));
+      object-fit: contain;
+      z-index: 1;
+      transform: rotate(-90deg);
+      opacity: 0;
+      transition: transform .3s ease .3s, opacity .3s ease .3s;
+      @media (min-width: 990px) {
+        right: unset;
+        top: unset;
+        left: calc(160 * var(--width-multiplier));
+        bottom: calc(80 * var(--width-multiplier));
+        width: calc(110 * var(--width-multiplier));
+        height: calc(110 * var(--width-multiplier));
       }
     }
     @media (min-width: 990px) {
@@ -2175,11 +2202,12 @@
     top: calc(50% - calc(190 * var(--width-multiplier)));
     left: 50%;
     width: calc(260 * var(--width-multiplier));
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.8);
     border-radius: 100%;
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
+    transition: transform .3s ease-out;
     img {
       width: 100%;
       object-fit: cover;
