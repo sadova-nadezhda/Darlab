@@ -2592,11 +2592,14 @@ span.flatpickr-weekday {
   display: flex;
 }
 
+.about__select select {
+  width: 100%;
+  padding: calc(12 * var(--width-multiplier)) calc(14 * var(--width-multiplier));
+  border-radius: calc(12 * var(--width-multiplier));
+}
+
 .about__selector {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2605,15 +2608,14 @@ span.flatpickr-weekday {
 
 .about__selector-item {
   position: absolute;
-  top: calc(-80 * var(--width-multiplier));
-  left: calc(280 * var(--width-multiplier));
+  top: -1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(72 * var(--width-multiplier));
-  height: calc(72 * var(--width-multiplier));
-  transform: rotate(calc(-90deg + 16deg * (var(--item-count) - 1) / 2 - 16deg * var(--item-index)));
-  transform-origin: calc(38 * var(--width-multiplier)) calc(352 * var(--width-multiplier));
+  width: 3rem;
+  height: 3rem;
+  transform-origin: 1.5rem 10rem;
+  transform: rotate(calc(0deg - 30deg * (var(--item-count) - 1) / 2 + 30deg * var(--item-index)));
   transition-timing-function: ease;
   transition-duration: 0.3s;
   transition-property: transform, opacity;
@@ -2621,8 +2623,8 @@ span.flatpickr-weekday {
 }
 
 .about__selector-item.active .about__selector-button {
-  width: calc(72 * var(--width-multiplier));
-  height: calc(72 * var(--width-multiplier));
+  width: calc(48 * var(--width-multiplier));
+  height: calc(48 * var(--width-multiplier));
   background-color: var(--item-color);
 }
 
@@ -2636,9 +2638,7 @@ span.flatpickr-weekday {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(72 * var(--width-multiplier));
-  height: calc(72 * var(--width-multiplier));
-  transform: rotate(calc(45deg * (var(--item-count) - 1) / 2 + 15deg * var(--item-index)));
+  transform: rotate(calc(30deg * (var(--item-count) - 1) / 2 - 30deg * var(--item-index)));
 }
 
 .about__selector-button {
@@ -2676,8 +2676,8 @@ span.flatpickr-weekday {
 
 .about__selector svg {
   position: relative;
-  width: calc(540 * var(--width-multiplier));
-  height: calc(540 * var(--width-multiplier));
+  width: calc(320 * var(--width-multiplier));
+  height: calc(320 * var(--width-multiplier));
   touch-action: none;
   vertical-align: middle;
   overflow-clip-margin: content-box;
@@ -2689,11 +2689,10 @@ span.flatpickr-weekday {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  height: calc(620 * var(--width-multiplier));
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: calc(-50 * var(--width-multiplier));
+  width: 100vw;
+  height: calc(420 * var(--width-multiplier));
+  margin: 0 calc(-16 * var(--width-multiplier));
+  margin-top: calc(-210 * var(--width-multiplier));
 }
 
 .about__pane {
@@ -2702,11 +2701,11 @@ span.flatpickr-weekday {
   left: 0;
   display: flex;
   flex-direction: column;
-  gap: calc(36 * var(--width-multiplier));
+  gap: calc(20 * var(--width-multiplier));
   width: 100%;
   height: 100%;
-  padding: calc(50 * var(--width-multiplier));
-  padding-left: calc(350 * var(--width-multiplier));
+  padding: calc(16 * var(--width-multiplier));
+  padding-top: calc(200 * var(--width-multiplier));
   color: var(--white, #FFFFFF);
   background-color: var(--item-color);
   opacity: 0;
@@ -2733,9 +2732,9 @@ span.flatpickr-weekday {
 
 .about__img {
   position: absolute;
-  top: 50%;
-  width: calc(444 * var(--width-multiplier));
-  left: calc(10 * var(--width-multiplier));
+  top: calc(50% - 190 * var(--width-multiplier));
+  left: 50%;
+  width: calc(260 * var(--width-multiplier));
   transform: translate(-50%, -50%);
   border-radius: 100%;
   overflow: hidden;
@@ -4287,10 +4286,82 @@ span.flatpickr-weekday {
   font-weight: 500;
 }
 
+@media (min-width: 990px) {
+  .about__select select {
+    display: none;
+  }
+
+  .about__selector-item.active .about__selector-button {
+    width: calc(72 * var(--width-multiplier));
+    height: calc(72 * var(--width-multiplier));
+  }
+
+  .about__selector-item {
+    top: calc(-80 * var(--width-multiplier));
+    left: calc(280 * var(--width-multiplier));
+    width: calc(72 * var(--width-multiplier));
+    height: calc(72 * var(--width-multiplier));
+    transform: rotate(calc(-90deg + 16deg * (var(--item-count) - 1) / 2 - 16deg * var(--item-index)));
+    transform-origin: calc(38 * var(--width-multiplier)) calc(352 * var(--width-multiplier));
+  }
+
+  .about__selector-inner {
+    width: calc(72 * var(--width-multiplier));
+    height: calc(72 * var(--width-multiplier));
+    transform: rotate(calc(45deg * (var(--item-count) - 1) / 2 + 15deg * var(--item-index)));
+  }
+
+  .about__selector svg {
+    width: calc(540 * var(--width-multiplier));
+    height: calc(540 * var(--width-multiplier));
+  }
+
+  .about__selector {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .about__content {
+    width: 50vw;
+    height: calc(620 * var(--width-multiplier));
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: calc(-50 * var(--width-multiplier));
+  }
+
+  .about__pane {
+    padding: calc(50 * var(--width-multiplier));
+    padding-left: calc(350 * var(--width-multiplier));
+  }
+
+  .about__img {
+    width: calc(444 * var(--width-multiplier));
+    top: 50%;
+    left: calc(10 * var(--width-multiplier));
+  }
+}
+
 @media (max-width: 1024px) {
   :root {
     --width-base: 375;
     --width-current: 100vmin;
+  }
+}
+
+@media (max-width: 990px) {
+  .about__container {
+    flex-direction: column;
+    gap: calc(32 * var(--width-multiplier));
+  }
+
+  .about__selector-name {
+    display: none;
+  }
+
+  .about__button {
+    width: 100%;
   }
 }
 

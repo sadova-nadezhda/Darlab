@@ -616,12 +616,13 @@ window.addEventListener("load", function () {
 
         const buttons = Array.from(container.querySelectorAll("[data-about-button]"));
         const panes = Array.from(container.querySelectorAll("[data-about-pane]"));
+        const select = container.querySelector("[data-about-select]");
 
         let activeButton = buttons.find(btn => btn.classList.contains("active")) || buttons[Math.floor(buttons.length / 2)];
         let activeKey = activeButton?.dataset.aboutButton;
         let activePane = panes.find(pane => pane.dataset.aboutPane === activeKey);
 
-        function activateabout(key) {
+        function activateAbout(key) {
             const newButton = buttons.find(btn => btn.dataset.aboutButton === key);
             const newPane = panes.find(pane => pane.dataset.aboutPane === key);
 
@@ -635,8 +636,14 @@ window.addEventListener("load", function () {
         }
 
         buttons.forEach(btn => {
-            btn.addEventListener("click", () => activateabout(btn.dataset.aboutButton));
+            btn.addEventListener("click", () => activateAbout(btn.dataset.aboutButton));
         });
+
+        if (select) {
+          select.addEventListener("change", () => {
+              activateAbout(select.value);
+          });
+        }
 
         container.dataset.about = "initilized";
     });
