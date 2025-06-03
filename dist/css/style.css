@@ -2684,6 +2684,7 @@ span.flatpickr-weekday {
   vertical-align: middle;
   overflow-clip-margin: content-box;
   overflow: hidden;
+  z-index: -1;
 }
 
 .about__content {
