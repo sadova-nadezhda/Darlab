@@ -4804,6 +4804,10 @@ span.flatpickr-weekday {
     gap: calc(32 * var(--width-multiplier));
   }
 
+  .hero__socials {
+    display: none;
+  }
+
   .hero__wrap {
     gap: calc(32 * var(--width-multiplier));
   }
