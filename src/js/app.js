@@ -92,6 +92,16 @@ window.addEventListener("load", function () {
 
   handleScroll();
 
+  // socials
+
+  const socials = document.querySelector('.hero__socials');
+
+  if(socials) {
+    socials.addEventListener('click', () => {
+      socials.classList.toggle('active');
+    })
+  }
+
   // Menu
   const link = document.querySelector(".header__burger");
   const menu = document.querySelector(".header__nav");
@@ -299,6 +309,11 @@ window.addEventListener("load", function () {
   animateElements(".fade-left", { 
     opacity: [0, 1], 
     transform: ["translateX(-50px)", "translateY(0)"] 
+  });
+
+  animateElements(".fade-right", { 
+    opacity: [0, 1], 
+    transform: ["translateX(50px)", "translateY(0)"] 
   });
 
   const observer = new IntersectionObserver(entries => {
@@ -514,10 +529,10 @@ window.addEventListener("load", function () {
       direction: "vertical",
       spaceBetween: 16,
       loop: true,
-      // autoplay: { 
-      //   delay: 2500, 
-      //   disableOnInteraction: false 
-      // },
+      autoplay: { 
+        delay: 2500, 
+        disableOnInteraction: false 
+      },
       pagination: { 
         el: ".hero-pagination" 
       },
@@ -531,6 +546,10 @@ window.addEventListener("load", function () {
       direction: 'horizontal',
       slidesPerView: 1.1,
       spaceBetween: 16,
+      autoplay: { 
+        delay: 3000, 
+        disableOnInteraction: false 
+      },
       breakpoints: { 
         981: { 
           slidesPerView: 4, 
@@ -544,7 +563,7 @@ window.addEventListener("load", function () {
       spaceBetween: 16,
       loop: true,
       autoplay: { 
-        delay: 3000, 
+        delay: 3500, 
         disableOnInteraction: false 
       },
       breakpoints: { 

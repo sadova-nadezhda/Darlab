@@ -2428,11 +2428,67 @@ span.flatpickr-weekday {
   gap: calc(120 * var(--width-multiplier));
 }
 
+.hero__socials {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--width-multiplier));
+}
+
+.hero__socials a,
+.hero__socials button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(40 * var(--width-multiplier));
+  height: calc(40 * var(--width-multiplier));
+  border-radius: 100%;
+  border: 1px solid var(--dark, #020304);
+}
+
+.hero__socials a svg,
+.hero__socials button svg {
+  min-width: calc(18 * var(--width-multiplier));
+  width: calc(18 * var(--width-multiplier));
+  height: calc(18 * var(--width-multiplier));
+  transition: transform 0.3s ease-out;
+}
+
+.hero__socials a:hover,
+.hero__socials button:hover {
+  cursor: pointer;
+}
+
+.hero__socials a {
+  transform: translateY(calc(50 * var(--width-multiplier)));
+  opacity: 0;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.hero__socials a:hover svg {
+  transform: scale(1.1);
+}
+
+.hero__socials button {
+  background-color: var(--dark, #020304);
+}
+
+.hero__socials button svg {
+  transform: rotate(45deg);
+}
+
+.hero__socials.active a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero__socials.active button svg {
+  transform: rotate(0);
+}
+
 .hero__wrap {
   display: flex;
   flex-direction: column;
   gap: calc(64 * var(--width-multiplier));
-  margin-left: auto;
 }
 
 .hero__slider {
