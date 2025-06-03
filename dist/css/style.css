@@ -323,9 +323,7 @@ select:focus {
 }
 
 .button-light:hover {
-  color: var(--white, #FFFFFF);
-  background-color: var(--primary-green, #94B522);
-  border-color: var(--primary-green, #94B522);
+  border-color: var(--dark, #020304);
 }
 
 .button-border {
@@ -2715,10 +2713,12 @@ span.flatpickr-weekday {
   transition-timing-function: ease;
   transition-duration: 0.3s;
   transition-property: opacity;
+  pointer-events: none;
 }
 
 .about__pane.active {
   opacity: 1;
+  pointer-events: all;
 }
 
 .about__pane.active .about__desc {
@@ -2759,10 +2759,11 @@ span.flatpickr-weekday {
 .about__button {
   transform: translateY(20px);
   opacity: 0;
-  transition-timing-function: ease;
-  transition-duration: 0.3s;
-  transition-property: transform, opacity;
-  transition-delay: 0.3s;
+  transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.3s;
+}
+
+.about__button {
+  transition: all 0.3s ease-out, transform 0.4s ease 0.3s, opacity 0.4s ease 0.3s;
 }
 
 .about-page__top {

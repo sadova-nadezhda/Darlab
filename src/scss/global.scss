@@ -238,9 +238,7 @@ select {
     border-color: var(--white, $white);
     background-color: var(--white, $white);
     &:hover {
-      color: var(--white, $white);
-      background-color: var(--primary-green, $primary-green);
-      border-color: var(--primary-green, $primary-green);
+      border-color: var(--dark, $dark);
     }
   }
   &-border {

@@ -2108,15 +2108,17 @@
     transition-timing-function: ease;
     transition-duration: .3s;
     transition-property: opacity;
+    pointer-events: none;
     &.active {
       opacity: 1;
+      pointer-events: all;
       .about__desc {
         transform: translateY(0);
-        opacity: 1
+        opacity: 1;
       }
       .about__button {
         transform: translateY(0);
-        opacity: 1
+        opacity: 1;
       }
     }
   }
@@ -2144,10 +2146,11 @@
   &__desc, &__button {
     transform: translateY(20px);
     opacity: 0;
-    transition-timing-function: ease;
-    transition-duration: .3s;
-    transition-property: transform,opacity,-webkit-transform;
-    transition-delay: .3s
+    transition: transform .3s ease .3s, opacity .3s ease .3s;
+    // pointer-events: none;
+  }
+  &__button {
+    transition: all .3s ease-out, transform .4s ease .3s, opacity .4s ease .3s;
   }
   &-page {
     &__top {
