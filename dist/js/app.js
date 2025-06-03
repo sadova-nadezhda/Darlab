@@ -608,6 +608,42 @@ window.addEventListener("load", function () {
     if (newActive) newActive.classList.add('active-tab');
   });
 
+  // about tabs
+
+  function initAboutTabs() {
+    document.querySelectorAll("[data-about]").forEach(container => {
+        if (container.dataset.about === "initilized") return;
+
+        const buttons = Array.from(container.querySelectorAll("[data-about-button]"));
+        const panes = Array.from(container.querySelectorAll("[data-about-pane]"));
+
+        let activeButton = buttons.find(btn => btn.classList.contains("active")) || buttons[Math.floor(buttons.length / 2)];
+        let activeKey = activeButton?.dataset.aboutButton;
+        let activePane = panes.find(pane => pane.dataset.aboutPane === activeKey);
+
+        function activateabout(key) {
+            const newButton = buttons.find(btn => btn.dataset.aboutButton === key);
+            const newPane = panes.find(pane => pane.dataset.aboutPane === key);
+
+            activeButton?.classList.remove("active");
+            newButton.classList.add("active");
+            activeButton = newButton;
+
+            activePane?.classList.remove("active");
+            newPane.classList.add("active");
+            activePane = newPane;
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => activateabout(btn.dataset.aboutButton));
+        });
+
+        container.dataset.about = "initilized";
+    });
+  }
+
+  initAboutTabs();
+
   // GSAP 
 
   if (isDesktop) {
