@@ -2411,7 +2411,7 @@ span.flatpickr-weekday {
 }
 
 .hero {
-  padding-top: calc(222 * var(--width-multiplier));
+  padding-top: calc(180 * var(--width-multiplier));
   padding-bottom: calc(100 * var(--width-multiplier));
 }
 
