@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Главная</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250603181031">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250603181031" />
-  <link rel="stylesheet" href="css/style.css?_v=20250603181031" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250604130707">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250604130707" />
+  <link rel="stylesheet" href="css/style.css?_v=20250604130707" />
 </head>
 
   <body>
@@ -23,7 +23,7 @@
             <li><a href="about.html">О компании</a></li>
             <li><a href="services.html">Прайс-лист</a></li>
             <li><a href="map.html">Карта лабораторий</a></li>
-            <li><a href="">Сотрудничество</a></li>
+            <li><a href="news.html">Новости</a></li>
             <li><a href="contacts.html">Контакты</a></li>
           </ul>
           <form class="form-search header__search" role="search">
@@ -59,14 +59,7 @@
 
 
     <main class="page-default page-hero">
-      <svg
-        class="back back_1"
-        width="567"
-        height="433"
-        viewBox="0 0 567 433"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="back back_1" width="567" height="433" viewBox="0 0 567 433" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_900_3139)">
           <path
             d="M-190.115 152.296C-231.515 174.427 -247.702 226.629 -218.03 263.007C-163.16 330.278 -89.1509 380.332 -4.86686 405.894C106.753 439.748 227.249 427.874 330.114 372.884C432.979 317.895 509.787 224.295 543.64 112.675C569.203 28.3914 568.693 -60.9538 543.235 -143.947C529.468 -188.828 477.069 -204.364 435.669 -182.233L391.665 -158.71C350.265 -136.578 336.587 -84.5665 341.477 -37.8777C344.504 -8.98004 341.805 20.5091 333.209 48.8534C316.282 104.663 277.878 151.463 226.446 178.958C175.013 206.452 114.765 212.39 58.9551 195.463C30.6108 186.866 4.59041 172.73 -17.7573 154.161C-53.8636 124.159 -104.711 106.641 -146.111 128.773L-190.115 152.296Z"
@@ -165,7 +158,7 @@
                   <div class="swiper heroSwiper">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
-                        <div class="hero__card hero-stock__card">
+                        <a class="hero__card hero-stock__card" href="stock-inner.html">
                           <div class="hero-stock__img">
                             <img src="img/stock.png" alt="" />
                           </div>
@@ -179,7 +172,7 @@
                                 для новых предложений.
                               </div>
                             </div>
-                            <a href="" class="hero-stock__button">
+                            <div class="hero-stock__button">
                               <svg
                                 width="25"
                                 height="25"
@@ -192,12 +185,12 @@
                                   fill="black"
                                 />
                               </svg>
-                            </a>
+                            </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                       <div class="swiper-slide">
-                        <div class="hero__card hero-stock__card">
+                        <a class="hero__card hero-stock__card" href="stock-inner.html">
                           <div class="hero-stock__img">
                             <img src="img/stock.png" alt="" />
                           </div>
@@ -211,7 +204,7 @@
                                 для новых предложений.
                               </div>
                             </div>
-                            <a href="" class="hero-stock__button">
+                            <div class="hero-stock__button">
                               <svg
                                 width="25"
                                 height="25"
@@ -224,12 +217,12 @@
                                   fill="black"
                                 />
                               </svg>
-                            </a>
+                            </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                       <div class="swiper-slide">
-                        <div class="hero__card hero-stock__card">
+                        <a class="hero__card hero-stock__card" href="stock-inner.html">
                           <div class="hero-stock__img">
                             <img src="img/stock.png" alt="" />
                           </div>
@@ -243,7 +236,7 @@
                                 для новых предложений.
                               </div>
                             </div>
-                            <a href="" class="hero-stock__button">
+                            <div class="hero-stock__button">
                               <svg
                                 width="25"
                                 height="25"
@@ -256,9 +249,9 @@
                                   fill="black"
                                 />
                               </svg>
-                            </a>
+                            </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -354,7 +347,7 @@
         <section id="price" class="price section-pad-bottom section-hidden">
           <div class="container">
             <div class="price__container">
-              <h2 class="price__title title-indent scroll-animate">Прайс-лист</h2>
+              <h2 class="price__title title-indent up">Прайс-лист</h2>
               <div class="price__wrap">
                 <div class="price__slider">
                   <div class="swiper priceSwiper">
@@ -435,8 +428,8 @@
           <div class="container">
             <div class="news__container">
               <div class="news__col">
-                <h2 class="news__title title-indent scroll-animate">Новости</h2>
-                <div class="news__desc scroll-animate">
+                <h2 class="news__title title-indent up">Новости</h2>
+                <div class="news__desc up">
                   В своём стремлении повысить качество жизни, они забывают, что
                   экономическая повестка сегодняшнего дня позволяет оценить
                   значение укрепления моральных ценностей.
@@ -529,7 +522,7 @@
         </section>
         <section id="benefits" class="benefits section-pad-bottom section-hidden">
   <div class="container">
-    <h2 class="benefits__title title-indent scroll-animate">Преимущества</h2>
+    <h2 class="benefits__title title-indent up">Преимущества</h2>
   </div>
   <div class="benefits__container pin-wrap">
     <div class="benefits__card benefits-card benefits-card_lg">
@@ -546,6 +539,9 @@
         <span>rat</span>
         <span>ory</span>
       </div>
+      <svg class="wave" width="1061" height="346" viewBox="0 0 1061 346" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 343.497V60.8616C95.7404 32.4946 325.5 -91.8021 558 126.78C790.5 345.363 1061 346 1061 346L0 343.497Z" fill="#E9EEEA"/>
+      </svg>
     </div>
     <div class="benefits__slider">
       <div class="swiper benefitsSwiper">
@@ -591,11 +587,11 @@
         <section class="about section-pad-bottom section-hidden" data-about>
           <div class="container">
             <div class="about__container">
-              <h2 class="about__title scroll-animate">О компании</h2>
+              <h2 class="about__title">О компании</h2>
               <div class="about__select">
                 <select name="" id="" data-about-select>
                   <option value="1">О компании</option>
-                  <option value="2">Сотрудничество</option>
+                  <option value="2">Акции</option>
                   <option value="3">История</option>
                   <option value="4">Команда</option>
                 </select>
@@ -612,7 +608,7 @@
                   <div class="about__selector-inner">
                     <div class="about__selector-button" style="--item-color: #F1C10A">
                     </div>
-                    <span class="about__selector-name">Сотрудничество</span>
+                    <span class="about__selector-name">Акции</span>
                   </div>
                 </div>
                 <div class="about__selector-item" style="--item-index: 2" data-about-button="3">
@@ -653,7 +649,7 @@
                   <div class="about__desc">
                     Сложно сказать, почему базовые сценарии поведения пользователей описаны максимально подробно. Принимая во внимание показатели успешности, базовый вектор развития выявляет срочную потребность системы массового участия.
                   </div>
-                  <a href="" class="about__button button button-light">
+                  <a href="stock.html" class="about__button button button-light">
                     <span> Подробнее </span>
                   </a>
                   <img class="icon" src="img/about-icon-4.svg" alt="">
@@ -687,14 +683,7 @@
           </div>
         </section>
       </div>
-      <svg
-        class="back back_2"
-        width="838"
-        height="1351"
-        viewBox="0 0 838 1351"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="back back_2" width="838" height="1351" viewBox="0 0 838 1351" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_900_3140)">
           <path
             d="M1205.72 235.881C1234.99 199.182 1229.18 145.248 1189.49 120.18C1041.76 26.8774 865.899 -14.045 690.605 5.68394C487.01 28.5981 300.857 131.451 173.097 291.617C45.3371 451.783 -13.5647 656.141 9.34946 859.735C29.0785 1035.03 108.067 1197.39 231.874 1320.69C265.137 1353.82 319.014 1347.49 348.287 1310.79L434.966 1202.13C464.24 1165.43 457.481 1112.37 426.736 1076.9C365.788 1006.57 326.965 918.956 316.411 825.176C302.662 703.02 338.003 580.405 414.659 484.305C491.316 388.206 603.007 326.494 725.164 312.745C818.944 302.191 912.993 320.568 995.109 364.358C1036.53 386.448 1089.77 381.244 1119.04 344.545L1205.72 235.881Z"
@@ -880,20 +869,20 @@
           <h5 class="footer__caption">Меню</h5>
           <ul class="footer__menu">
             <li><a href="">Главная</a></li>
-            <li><a href="">Каталог</a></li>
+            <li><a href="">Прайс-лист</a></li>
             <li><a href="">О компании</a></li>
-            <li><a href="">Преимущества</a></li>
+            <li><a href="">Акции</a></li>
             <li><a href="">Новости</a></li>
           </ul>
         </div>
         <div class="footer__col">
-          <h5 class="footer__caption">Приватная информация</h5>
+          <h5 class="footer__caption">Контакты и Приватная информация</h5>
           <ul class="footer__menu">
             <li><a href="">Политика конфиденциальности</a></li>
-            <li><a href="">Прозрачность цен</a></li>
-            <li><a href="">Условия использования</a></li>
-            <li><a href="">Уведомление о недискриминации</a></li>
-            <li><a href="">Языковая помощь</a></li>
+            <li><a href="">Карта лабораторий</a></li>
+            <li><a href="">FAQ</a></li>
+            <li><a href="">Документация</a></li>
+            <li><a href="">Контакты</a></li>
           </ul>
         </div>
       </div>
@@ -904,15 +893,14 @@
   </div>
 </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250603181031"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js?_v=20250603181031"></script>
-<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20250603181031"></script> -->
-<script src="js/app.js?_v=20250603181031"></script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250604130707"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250604130707"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20250604130707"></script>
+<script src="js/app.js?_v=20250604130707"></script>
   </body>
 </html>

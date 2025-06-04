@@ -1264,7 +1264,7 @@ span.flatpickr-weekday {
   pointer-events: none;
 }
 
-.scroll-animate {
+.scroll-fade-in {
   opacity: 0;
   transform: translateY(50px);
 }
@@ -1277,11 +1277,6 @@ span.flatpickr-weekday {
 .fade-down {
   opacity: 0;
   transform: translateY(-50px);
-}
-
-.fade-left {
-  opacity: 0;
-  transform: translateX(-150px);
 }
 
 .login__wrap {
@@ -1839,7 +1834,7 @@ span.flatpickr-weekday {
 }
 
 .cabinet__bottom_lg {
-  margin-top: calc(24 * var(--width-multiplier));
+  margin-top: calc(50 * var(--width-multiplier));
 }
 
 .cabinet__button {
@@ -2569,6 +2564,10 @@ span.flatpickr-weekday {
   overflow: hidden;
 }
 
+.hero-stock__card:hover .hero-stock__button svg {
+  transform: scale(-1);
+}
+
 .hero-stock__img {
   min-width: calc(154 * var(--width-multiplier));
   width: calc(154 * var(--width-multiplier));
@@ -2619,6 +2618,10 @@ span.flatpickr-weekday {
   height: calc(40 * var(--width-multiplier));
   border-radius: 100%;
   background-color: var(--primary-yellow, #F3C10B);
+}
+
+.hero-stock__button svg {
+  transition: transform 0.3s ease-out;
 }
 
 .hero-pagination.swiper-pagination-vertical {
@@ -3099,6 +3102,15 @@ span.flatpickr-weekday {
   padding: calc(34 * var(--width-multiplier));
   border-radius: 0px 0px 0px calc(20 * var(--width-multiplier));
   background-color: var(--white, #FFFFFF);
+}
+
+.benefits-card .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
 }
 
 .benefits-card_lg {
@@ -4757,6 +4769,10 @@ span.flatpickr-weekday {
 
   .cabinet__box {
     grid-template-columns: 1fr;
+  }
+
+  .cabinet__bottom_lg {
+    margin-top: calc(32 * var(--width-multiplier));
   }
 
   .cabinet__bottom {

@@ -1,32 +1,3 @@
-gsap.registerPlugin(ScrollTrigger);
-
-const pageContainer = document.querySelector(".page-wrapper");
-
-/* SMOOTH SCROLL */
-// const scroller = new LocomotiveScroll({
-//   el: pageContainer,
-//   smooth: true
-// });
-
-// scroller.on("scroll", ScrollTrigger.update);
-
-// ScrollTrigger.scrollerProxy(pageContainer, {
-//   scrollTop(value) {
-//     return arguments.length
-//       ? scroller.scrollTo(value, 0, 0)
-//       : scroller.scroll.instance.scroll.y;
-//   },
-//   getBoundingClientRect() {
-//     return {
-//       left: 0,
-//       top: 0,
-//       width: window.innerWidth,
-//       height: window.innerHeight
-//     };
-//   },
-//   pinType: pageContainer.style.transform ? "transform" : "fixed"
-// });
-
 // Общие функции
 const debounce = (func, delay = 100) => {
   let timeoutId;
@@ -35,12 +6,13 @@ const debounce = (func, delay = 100) => {
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
 };
-
 const toggleClass = (element, className, condition) => {
   condition ? element.classList.add(className) : element.classList.remove(className);
 };
 
 // GSAP 
+gsap.registerPlugin(ScrollTrigger);
+
 function initBenefitsAnimation() {
   const benefitsSection = document.querySelector("#benefits");
   if (!benefitsSection) return;
@@ -284,7 +256,7 @@ window.addEventListener("load", function () {
   }
 
   // Анимации
-  const { animate, scroll } = Motion;
+  const { animate } = Motion;
   const animateElements = (selector, props, options) => {
     document.querySelectorAll(selector).forEach(el => {
       animate(el, props, {
@@ -306,16 +278,6 @@ window.addEventListener("load", function () {
     transform: ["translateY(-50px)", "translateY(0)"] 
   });
 
-  animateElements(".fade-left", { 
-    opacity: [0, 1], 
-    transform: ["translateX(-50px)", "translateY(0)"] 
-  });
-
-  animateElements(".fade-right", { 
-    opacity: [0, 1], 
-    transform: ["translateX(50px)", "translateY(0)"] 
-  });
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -331,7 +293,7 @@ window.addEventListener("load", function () {
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll(".scroll-animate").forEach(observer.observe.bind(observer));
+  document.querySelectorAll(".scroll-fade-in").forEach(observer.observe.bind(observer));
 
   // Календарь
   document.querySelectorAll(".calendar__date").forEach(el => {
@@ -578,6 +540,10 @@ window.addEventListener("load", function () {
       spaceBetween: 20,
       // loop: true,
       initialSlide: 2,
+      autoplay: { 
+        delay: 3000, 
+        disableOnInteraction: false 
+      },
       pagination: {
         el: ".teams-pagination",
       },
@@ -593,7 +559,6 @@ window.addEventListener("load", function () {
 
   const tabButtons = new Swiper('.history-buttons', {
     slidesPerView: 4,
-    mousewheel: true,
     breakpoints: { 
       981: { 
         slidesPerView: 11,
@@ -681,6 +646,65 @@ window.addEventListener("load", function () {
       },
     });
   }
+
+  const scrollTriggerConfig = {
+    start: "top bottom",
+    end: "bottom 20%",
+    anticipatePin: 1,
+    toggleActions: "play none none reverse",
+  };
+
+  gsap.utils.toArray(".up").forEach(element => {
+    gsap.fromTo(element,
+      { yPercent: 60, opacity: 0 },
+      {
+        duration: 1.2,
+        opacity: 1,
+        yPercent: 0,
+        ease: "power2.out",
+        scrollTrigger: { trigger: element, ...scrollTriggerConfig }
+      }
+    );
+  });
+  
+  gsap.utils.toArray(".flip").forEach(element => {
+    gsap.fromTo(element,
+      { rotationX: 90, opacity: 0 },
+      {
+        duration: 1.2,
+        rotationX: 0,
+        opacity: 1,
+        ease: "power2.out",
+        scrollTrigger: { trigger: element, ...scrollTriggerConfig }
+      }
+    );
+  });
+  
+  gsap.utils.toArray(".fade-left").forEach(element => {
+    gsap.fromTo(element,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: { trigger: element, ...scrollTriggerConfig }
+      }
+    );
+  });
+  
+  gsap.utils.toArray(".fade-right").forEach(element => {
+    gsap.fromTo(element,
+      { opacity: 0, x: 50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: { trigger: element, ...scrollTriggerConfig }
+      }
+    );
+  });
 
   // Modal
 
