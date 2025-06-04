@@ -445,7 +445,7 @@ span.flatpickr-weekday {
   left: 0;
   right: 0;
   z-index: 9;
-  padding-top: calc(50 * var(--width-multiplier));
+  padding-top: calc(30 * var(--width-multiplier));
   transition: padding 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
@@ -755,11 +755,19 @@ span.flatpickr-weekday {
 }
 
 .section-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
   overflow: hidden;
 }
 
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .section-first {
-  margin-top: calc(122 * var(--width-multiplier));
+  margin-top: calc(100 * var(--width-multiplier));
 }
 
 .breadcrumbs {
@@ -1277,6 +1285,17 @@ span.flatpickr-weekday {
 .fade-down {
   opacity: 0;
   transform: translateY(-50px);
+}
+
+.anim-img {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease;
+}
+
+.anim-img.animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .login__wrap {
@@ -2411,7 +2430,7 @@ span.flatpickr-weekday {
 }
 
 .hero {
-  padding-top: calc(180 * var(--width-multiplier));
+  padding-top: calc(160 * var(--width-multiplier));
   padding-bottom: calc(100 * var(--width-multiplier));
 }
 
@@ -3079,6 +3098,10 @@ span.flatpickr-weekday {
 
 .price__button:hover {
   background-color: var(--dark-green, #225E2E);
+}
+
+.benefits {
+  overflow: hidden;
 }
 
 .benefits__container {
@@ -4579,15 +4602,15 @@ span.flatpickr-weekday {
   }
 
   .section-pad {
-    padding: calc(64 * var(--width-multiplier)) 0;
+    padding: calc(60 * var(--width-multiplier)) 0;
   }
 
   .section-pad-top {
-    padding-top: calc(64 * var(--width-multiplier));
+    padding-top: calc(60 * var(--width-multiplier));
   }
 
   .section-pad-bottom {
-    padding-bottom: calc(64 * var(--width-multiplier));
+    padding-bottom: calc(60 * var(--width-multiplier));
   }
 
   .section-first {
@@ -4928,7 +4951,7 @@ span.flatpickr-weekday {
   }
 
   .hero {
-    padding-top: calc(138 * var(--width-multiplier));
+    padding-top: calc(100 * var(--width-multiplier));
     padding-bottom: calc(64 * var(--width-multiplier));
   }
 

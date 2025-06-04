@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 9;
-  padding-top: calc(50 * var(--width-multiplier));
+  padding-top: calc(30 * var(--width-multiplier));
   transition: padding 0.3s ease-out, background-color 0.3s ease-out, box-shadow 0.3s ease-out;
   &__container {
     display: flex;
