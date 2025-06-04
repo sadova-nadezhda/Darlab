@@ -636,6 +636,123 @@
   }
 }
 
+// preloader
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark, $dark);
+  z-index: 9;
+  animation: back-white 1s ease-in-out 0.6s forwards;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: var(--primary-pink, $primary-pink);
+    box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
+    animation: zoom-1 1s ease-in-out forwards,
+               zoom-2 1s ease-in-out 1s forwards,
+               zoom-3 1s ease-in-out 2s forwards;
+  }
+
+  &__img {
+    position: relative;
+    img {
+      position: relative;
+      width: calc(175 * var(--width-multiplier));
+      height: calc(246 * var(--width-multiplier));
+      object-fit: contain;
+      z-index: 3;
+    }
+  }
+
+  &__logo {
+    width: calc(410 * var(--width-multiplier));
+    height: calc(96 * var(--width-multiplier));
+    opacity: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+@keyframes zoom-1 {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: calc(286 * var(--width-multiplier));
+    height: calc(286 * var(--width-multiplier));
+  }
+}
+
+@keyframes zoom-2 {
+  0% {
+    width: calc(286 * var(--width-multiplier));
+    height: calc(286 * var(--width-multiplier));
+    box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
+    background-color: var(--primary-pink, $primary-pink);
+  }
+  100% {
+    width: calc(438 * var(--width-multiplier));
+    height: calc(438 * var(--width-multiplier));
+    box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0.75);
+    background-color: var(--white, $white);
+  }
+}
+
+@keyframes zoom-3 {
+  0% {
+    width: calc(438 * var(--width-multiplier));
+    height: calc(438 * var(--width-multiplier));
+    border-radius: 100%;
+    background-color: var(--white, $white);
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
+    background-color: var(--primary-pink, $primary-pink);
+    border-radius: 0;
+  }
+}
+
+@keyframes back-white {
+  0% {
+    background-color: var(--dark, $dark);
+  }
+  100% {
+    background-color: var(--white, $white);
+  }
+}
+
+@keyframes preload {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
 // Cabinet
 
 .login {
