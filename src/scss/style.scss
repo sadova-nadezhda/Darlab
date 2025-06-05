@@ -645,13 +645,15 @@
   right: 0;
   width: 100%;
   height: 100vh;
-  background-color: var(--dark, $dark);
-  opacity: 0;
-  z-index: -1;
+  background-color: var(--white, $white);
+  z-index: 9;
+  transition: opacity 0.1s ease-in-out;
   &.active {
-    opacity: 1;
-    z-index: 9;
+    background-color: var(--dark, $dark);
     animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
+    .preloader__img {
+      opacity: 1;
+    }
   }
 
   &::before {
@@ -665,7 +667,7 @@
     border-radius: 100%;
     background-color: var(--primary-pink, $primary-pink);
     box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
-    animation: zoom-1 1s ease-in-out forwards,
+    animation: zoom-1 1s ease-in-out .1s forwards,
                zoom-2 1s ease-in-out 1s forwards,
                zoom-3 1s ease-in-out 2s forwards;
   }
@@ -675,6 +677,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
     img {
       position: relative;
       width: calc(175 * var(--width-multiplier));
