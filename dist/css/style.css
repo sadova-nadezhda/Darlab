@@ -1303,14 +1303,11 @@ span.flatpickr-weekday {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100vh;
   background-color: var(--dark, #020304);
   z-index: 9;
-  animation: back-white 1s ease-in-out 0.6s forwards;
+  animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
 }
 
 .preloader::before {
@@ -1328,7 +1325,10 @@ span.flatpickr-weekday {
 }
 
 .preloader__img {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .preloader__img img {
@@ -1338,12 +1338,18 @@ span.flatpickr-weekday {
   -o-object-fit: contain;
      object-fit: contain;
   z-index: 3;
+  animation: scale 1s ease-in-out 3s forwards;
 }
 
 .preloader__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: calc(410 * var(--width-multiplier));
   height: calc(96 * var(--width-multiplier));
   opacity: 0;
+  animation: opacity-2 1s ease-in-out 3s forwards;
 }
 
 .preloader__logo img {
@@ -1385,16 +1391,42 @@ span.flatpickr-weekday {
   0% {
     width: calc(438 * var(--width-multiplier));
     height: calc(438 * var(--width-multiplier));
-    border-radius: 100%;
     background-color: var(--white, #FFFFFF);
   }
 
   100% {
-    width: 100%;
-    height: 100%;
+    width: 150%;
+    height: 250%;
     box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
     background-color: var(--primary-pink, #E8A5BB);
-    border-radius: 0;
+  }
+}
+
+@keyframes scale {
+  0% {
+    width: calc(175 * var(--width-multiplier));
+    height: calc(246 * var(--width-multiplier));
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  100% {
+    width: 100vw;
+    height: 100vw;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes opacity-2 {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 
