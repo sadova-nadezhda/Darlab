@@ -1311,6 +1311,8 @@ span.flatpickr-weekday {
 }
 
 .preloader.active {
+  opacity: 1;
+  z-index: 9;
   animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
 }
 

@@ -766,8 +766,6 @@ window.addEventListener("load", function () {
   if (!getCookie("preloader_status")) {
     const preloader = document.querySelector('.preloader');
     if(preloader) {
-      preloader.style.opacity = 1;
-      preloader.style.zIndex = 9;
       preloader.classList.add('active');
       setCookie("preloader_status", "1", 1);
     }
@@ -776,8 +774,7 @@ window.addEventListener("load", function () {
     const preloader = document.querySelector('.preloader');
 
     if (preloader) {
-      preloader.style.opacity = 0;
-      preloader.style.zIndex = -1;
+      preloader.classList.remove('active');
     }
   }
 
