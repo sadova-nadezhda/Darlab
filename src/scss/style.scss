@@ -694,6 +694,10 @@
       height: 100%;
       object-fit: contain;
     }
+    @media(max-width: 980px) {
+      width: calc(320 * var(--width-multiplier));
+      height: calc(80 * var(--width-multiplier));
+    }
   }
 }
 
@@ -734,6 +738,22 @@
     height: 250%;
     box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
     background-color: var(--primary-pink, $primary-pink);
+  }
+}
+
+@media(max-width: 980px) {
+  @keyframes zoom-3 {
+    0% {
+      width: calc(438 * var(--width-multiplier));
+      height: calc(438 * var(--width-multiplier));
+      background-color: var(--white, $white);
+    }
+    100% {
+      width: 250%;
+      height: 150%;
+      box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
+      background-color: var(--primary-pink, $primary-pink);
+    }
   }
 }
 

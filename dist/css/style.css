@@ -4879,6 +4879,26 @@ span.flatpickr-weekday {
     width: 100%;
   }
 
+  .preloader__logo {
+    width: calc(320 * var(--width-multiplier));
+    height: calc(80 * var(--width-multiplier));
+  }
+
+@keyframes zoom-3 {
+    0% {
+      width: calc(438 * var(--width-multiplier));
+      height: calc(438 * var(--width-multiplier));
+      background-color: var(--white, #FFFFFF);
+    }
+
+    100% {
+      width: 250%;
+      height: 150%;
+      box-shadow: 0 1px 25px #F3A1BA inset, 0 0 100px rgba(243, 161, 186, 0);
+      background-color: var(--primary-pink, #E8A5BB);
+    }
+}
+
   .login__wrap {
     grid-template-columns: 1fr;
     padding: calc(16 * var(--width-multiplier));
