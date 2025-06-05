@@ -646,8 +646,11 @@
   width: 100%;
   height: 100vh;
   background-color: var(--dark, $dark);
-  z-index: 9;
-  animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
+  opacity: 0;
+  z-index: -1;
+  &.active {
+    animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
+  }
 
   &::before {
     content: '';
@@ -771,15 +774,6 @@
     pointer-events: none;
   }
 }
-
-// @keyframes opacity-1 {
-//     0% {
-
-//   }
-//   100% {
-
-//   }
-// }
 
 @keyframes opacity-2 {
     0% {

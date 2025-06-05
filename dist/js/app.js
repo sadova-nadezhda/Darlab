@@ -741,6 +741,46 @@ window.addEventListener("load", function () {
     })
   }
 
+  // Работа с куки
+  
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + "; path=/" + expires;
+  }
+
+  function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  if (!getCookie("preloader_status")) {
+    const preloader = document.querySelector('.preloader');
+    if(preloader) {
+      preloader.style.opacity = 1;
+      preloader.style.zIndex = 9;
+      preloader.classList.add('active');
+      setCookie("preloader_status", "1", 1);
+    }
+
+  } else {
+    const preloader = document.querySelector('.preloader');
+
+    if (preloader) {
+      preloader.style.opacity = 0;
+      preloader.style.zIndex = -1;
+    }
+  }
+
   // Глобальные обработчики
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".header__nav") && !e.target.closest(".header__burger") && !e.target.closest(".header__search")) {
