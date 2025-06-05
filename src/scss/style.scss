@@ -647,7 +647,7 @@
   height: 100vh;
   background-color: var(--white, $white);
   z-index: 9;
-  transition: opacity 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
   &.active {
     background-color: var(--dark, $dark);
     animation: back-white 1s ease-in-out 0.6s forwards, preload 1s ease forwards 5s;
