@@ -3337,6 +3337,7 @@ span.flatpickr-weekday {
   font-weight: 500;
   line-height: 1;
   z-index: 3;
+  transition: background-color 0.3s ease-out;
 }
 
 .services-page__basket .icon {
@@ -3356,6 +3357,11 @@ span.flatpickr-weekday {
   top: calc(-4 * var(--width-multiplier));
   right: calc(-4 * var(--width-multiplier));
   font-size: calc(12 * var(--width-multiplier));
+}
+
+.services-page__basket:hover {
+  cursor: pointer;
+  background-color: var(--primary-yellow, #F3C10B);
 }
 
 .services-page__wrap {
@@ -4748,6 +4754,58 @@ span.flatpickr-weekday {
   font-weight: 500;
 }
 
+.modal__row {
+  display: flex;
+  align-items: stretch;
+  gap: calc(12 * var(--width-multiplier));
+}
+
+.modal__row div {
+  display: flex;
+  align-items: center;
+  padding: calc(14 * var(--width-multiplier));
+  border-radius: calc(12 * var(--width-multiplier));
+  background-color: var(--light-back, #F0F1F5);
+}
+
+.modal__row svg {
+  min-width: calc(24 * var(--width-multiplier));
+  width: calc(24 * var(--width-multiplier));
+  height: calc(24 * var(--width-multiplier));
+}
+
+.modal__row .name {
+  flex-grow: 1;
+}
+
+.modal__row .price {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.modal__row .delete {
+  justify-content: center;
+  padding: calc(17 * var(--width-multiplier));
+}
+
+.modal__row .delete:hover {
+  cursor: pointer;
+}
+
+.modal__total {
+  font-weight: 500;
+}
+
+.modal-basket {
+  max-width: calc(730 * var(--width-multiplier));
+}
+
+.modal-basket .modal__caption {
+  flex-grow: 1;
+  font-size: calc(24 * var(--width-multiplier));
+  text-align: center;
+}
+
 @media (min-width: 990px) {
   .about__select select {
     display: none;
@@ -5746,6 +5804,22 @@ span.flatpickr-weekday {
 
   .modal__top {
     margin-bottom: calc(16 * var(--width-multiplier));
+  }
+
+  .modal__row .price {
+    flex-grow: 1;
+  }
+
+  .modal__row {
+    flex-wrap: wrap;
+  }
+
+  .modal__total .price {
+    flex-grow: 0;
+  }
+
+  .modal-basket .modal__caption {
+    font-size: calc(20 * var(--width-multiplier));
   }
 
   .modal {

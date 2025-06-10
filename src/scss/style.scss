@@ -2812,6 +2812,7 @@
       font-weight: 500;
       line-height: 1;
       z-index: 3;
+      transition: background-color 0.3s ease-out;
       .icon {
         position: relative;
         min-width: calc(20 * var(--width-multiplier));
@@ -2828,6 +2829,10 @@
         top: calc(-4 * var(--width-multiplier));
         right: calc(-4 * var(--width-multiplier));
         font-size: calc(12 * var(--width-multiplier));
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: var(--primary-yellow, $primary-yellow);
       }
       @media (max-width: 980px) {
         top: calc(80 * var(--width-multiplier));
@@ -4365,6 +4370,62 @@
     span {
       &:first-of-type {
         font-weight: 500;
+      }
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: stretch;
+    gap: calc(12 * var(--width-multiplier));
+    div {
+      display: flex;
+      align-items: center;
+      padding: calc(14 * var(--width-multiplier));
+      border-radius: calc(12 * var(--width-multiplier));
+      background-color: var(--light-back, $light-back);
+    }
+    svg {
+      min-width: calc(24 * var(--width-multiplier));
+      width: calc(24 * var(--width-multiplier));
+      height: calc(24 * var(--width-multiplier));
+    }
+    .name {
+      flex-grow: 1;
+    }
+    .price {
+      white-space: nowrap;
+      font-weight: 500;
+      @media(max-width: 980px) {
+        flex-grow: 1;
+      }
+    }
+    .delete {
+      justify-content: center;
+      padding: calc(17 * var(--width-multiplier));
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    @media(max-width: 980px) {
+      flex-wrap: wrap;
+    }
+  }
+  &__total {
+    font-weight: 500;
+    .price {
+      @media(max-width: 980px) {
+        flex-grow: 0;
+      }
+    }
+  }
+  &-basket {
+    max-width: calc(730 * var(--width-multiplier));
+    .modal__caption {
+      flex-grow: 1;
+      font-size: calc(24 * var(--width-multiplier));
+      text-align: center;
+      @media(max-width: 980px) {
+        font-size: calc(20 * var(--width-multiplier));
       }
     }
   }
