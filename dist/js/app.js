@@ -52,43 +52,43 @@ function initBenefitsAnimation() {
   });
 }
 
-  // Работа с куки
-  
-  function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-      let date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + "; path=/" + expires;
+// Работа с куки
+
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + "; path=/" + expires;
+}
+
+function getCookie(name) {
+  let nameEQ = name + "=";
+  let ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+if (!getCookie("preloader_status")) {
+  const preloader = document.querySelector('.preloader');
+  if(preloader) {
+    preloader.classList.add('active');
+    setCookie("preloader_status", "1", 1);
   }
 
-  function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i].trim();
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
+} else {
+  const preloader = document.querySelector('.preloader');
+
+  if (preloader) {
+    preloader.style.opacity = 0;
+    preloader.style.zIndex = -1;
   }
-
-  if (!getCookie("preloader_status")) {
-    const preloader = document.querySelector('.preloader');
-    if(preloader) {
-      preloader.classList.add('active');
-      setCookie("preloader_status", "1", 1);
-    }
-
-  } else {
-    const preloader = document.querySelector('.preloader');
-
-    if (preloader) {
-      preloader.style.opacity = 0;
-      preloader.style.zIndex = -1;
-    }
-  }
+}
 
 window.addEventListener("load", function () {
   const lang = document.documentElement.lang || 'en';
@@ -385,6 +385,26 @@ window.addEventListener("load", function () {
     });
 
     search.addEventListener("input", filterTable);
+  }
+
+  // Поиск услуг
+
+  const searchInput = document.getElementById('services-search');
+  const servicesCards = document.querySelectorAll('.services-page__card');
+
+  if(searchInput && servicesCards) {
+    searchInput.addEventListener('input', debounce(function () {
+      const query = searchInput.value.trim().toLowerCase();
+
+      servicesCards.forEach(card => {
+        const text = card.querySelector('.services-card__txt').textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }, 300));
   }
 
   // Показать еще
@@ -730,6 +750,34 @@ window.addEventListener("load", function () {
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.section-hidden').forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.services-page').forEach(el => revealObserver.observe(el));
+
+  // Service scroll
+
+  const links = document.querySelectorAll('.services-page__list a');
+  const groups = document.querySelectorAll('.services-page__group');
+  const headerOffset = header.offsetHeight;
+
+
+  function setActiveLink(activeLink) {
+    links.forEach(link => link.classList.remove('active'));
+    activeLink.classList.add('active');
+  }
+
+  function serviceScroll() {
+    const scrollY = window.scrollY + headerOffset;
+
+    groups.forEach(group => {
+      const top = group.offsetTop;
+      const height = group.offsetHeight;
+
+      if (scrollY >= top && scrollY < top + height) {
+        const id = group.getAttribute('id');
+        const activeLink = document.querySelector(`.services-page__list a[href="#${id}"]`);
+        if (activeLink) setActiveLink(activeLink);
+      }
+    });
+  }
 
   // Modal
 
@@ -787,11 +835,19 @@ window.addEventListener("load", function () {
     }
   });
 
+  let ticking = false;
   window.addEventListener("scroll", () => {
     handleScroll();
     if (menu?.classList.contains("open")) {
       link?.classList.remove("active");
       menu?.classList.remove("open");
+    }
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        serviceScroll();
+        ticking = false;
+      });
+      ticking = true;
     }
   });
 });
