@@ -743,6 +743,11 @@ span.flatpickr-weekday {
   height: 100%;
 }
 
+section {
+  position: relative;
+  z-index: 1;
+}
+
 .section-pad {
   padding: calc(100 * var(--width-multiplier)) 0;
 }
