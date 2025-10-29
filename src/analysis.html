@@ -28,7 +28,7 @@
                 </div>
                 Расходные материалы
               </a></li>
-              <li><a href="analysis.html" class="active">
+              <li class="cabinet__analys"><a href="analysis.html" class="active">
                 <div class="icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.35897 10.516C8.35897 10.1602 8.65171 9.8718 9.01282 9.8718H11.6282C11.9893 9.8718 12.2821 10.1602 12.2821 10.516C12.2821 10.8718 11.9893 11.1603 11.6282 11.1603H9.01282C8.65171 11.1603 8.35897 10.8718 8.35897 10.516Z" fill="#313742"/>
@@ -256,6 +256,56 @@
 
     @@include('html/modals.html')
     @@include('html/footer.html') 
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const TOUR_KEY = 'tour_person_v9';
+
+        const d = driver.js.driver({
+          showProgress: true,
+          allowClose: true, 
+          stagePadding: 6,
+          smoothScroll: true,
+          nextBtnText: 'Далее',
+          prevBtnText: 'Назад',
+          doneBtnText: 'Готово',
+          steps: [
+            {
+              element: '.cabinet__analys',
+              popover: {
+                title: 'Анализы',
+                description:
+                  'Здесь вы найдёте все анализы пациентов, посетивших ваш филиал. Нажмите на любой, чтобы открыть подробности и сохранить результаты при необходимости.',
+                side: 'right',
+                align: 'start',
+                offset: { left: 30 }
+              }
+            },
+            {
+              element: '.cabinet__search',
+              popover: {
+                title: 'Анализы',
+                description:
+                  'Поиск по номеру заказа, дате, ФИО.',
+                side: 'bottom',
+                align: 'start',
+              }
+            }
+          ],
+          onDestroyed: () => {
+            localStorage.setItem(TOUR_KEY, '1');
+          }
+        });
+
+        if (!localStorage.getItem(TOUR_KEY)) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            setTimeout(() => d.drive(), 1000);
+          }));
+        }
+
+      });
+    </script>
+
     @@include('html/foot.html')
   </body>
 </html>

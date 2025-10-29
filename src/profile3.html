@@ -12,7 +12,7 @@
         <div class="container">
           <div class="cabinet__container">
             <ul class="cabinet__aside">
-              <li><a href="profile3.html" class="active">
+              <li class="cabinet__profile"><a href="profile3.html" class="active">
                 <div class="icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.5132 7.36842C14.5132 8.81454 13.3409 9.98684 11.8947 9.98684V11.4868C14.1693 11.4868 16.0132 9.64296 16.0132 7.36842H14.5132ZM11.8947 9.98684C10.4486 9.98684 9.27632 8.81454 9.27632 7.36842H7.77632C7.77632 9.64296 9.6202 11.4868 11.8947 11.4868V9.98684ZM9.27632 7.36842C9.27632 5.92231 10.4486 4.75 11.8947 4.75V3.25C9.6202 3.25 7.77632 5.09388 7.77632 7.36842H9.27632ZM11.8947 4.75C13.3409 4.75 14.5132 5.92231 14.5132 7.36842H16.0132C16.0132 5.09388 14.1693 3.25 11.8947 3.25V4.75ZM9.36842 14.0132H14.4211V12.5132H9.36842V14.0132ZM14.4211 19.25H9.36842V20.75H14.4211V19.25ZM9.36842 19.25C7.92231 19.25 6.75 18.0777 6.75 16.6316H5.25C5.25 18.9061 7.09388 20.75 9.36842 20.75V19.25ZM17.0395 16.6316C17.0395 18.0777 15.8672 19.25 14.4211 19.25V20.75C16.6956 20.75 18.5395 18.9061 18.5395 16.6316H17.0395ZM14.4211 14.0132C15.8672 14.0132 17.0395 15.1855 17.0395 16.6316H18.5395C18.5395 14.357 16.6956 12.5132 14.4211 12.5132V14.0132ZM9.36842 12.5132C7.09388 12.5132 5.25 14.357 5.25 16.6316H6.75C6.75 15.1855 7.92231 14.0132 9.36842 14.0132V12.5132Z" fill="#313742"/>
@@ -140,6 +140,46 @@
 
     @@include('html/modals.html')
     @@include('html/footer.html') 
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const TOUR_KEY = 'tour_person_v4';
+
+        const d = driver.js.driver({
+          showProgress: true,
+          allowClose: true, 
+          stagePadding: 6,
+          smoothScroll: true,
+          nextBtnText: 'Далее',
+          prevBtnText: 'Назад',
+          doneBtnText: 'Готово',
+          steps: [
+            {
+              element: '.cabinet__profile',
+              popover: {
+                title: 'Личные данные',
+                description:
+                  'Добро пожаловать в личный кабинет! Здесь вы можете управлять своими личными данными. Давайте начнем с заполнения профиля.',
+                side: 'right',
+                align: 'start',
+                offset: { left: 30 }
+              }
+            }
+          ],
+          onDestroyed: () => {
+            localStorage.setItem(TOUR_KEY, '1');
+          }
+        });
+
+        if (!localStorage.getItem(TOUR_KEY)) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            setTimeout(() => d.drive(), 1000);
+          }));
+        }
+
+      });
+    </script>
+
     @@include('html/foot.html')
   </body>
 </html>

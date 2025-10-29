@@ -5,9 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Список пациентов и анализы</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250619133928">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250619133928" />
-  <link rel="stylesheet" href="css/style.css?_v=20250619133928" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20251029172838">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251029172838" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css?_v=20251029172838"/>
+  <link rel="stylesheet" href="css/style.css?_v=20251029172838" />
 </head>
 
   <body>
@@ -74,7 +75,7 @@
                 </div>
                 Личные данные
               </a></li>
-              <li><a href="patients.html" class="active">
+              <li class="cabinet__patients"><a href="patients.html" class="active">
                 <div class="icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.9021 8.05717C13.9021 9.17643 12.9947 10.0838 11.8755 10.0838V11.5838C13.8231 11.5838 15.4021 10.0049 15.4021 8.05717H13.9021ZM11.8755 10.0838C10.7562 10.0838 9.84886 9.17643 9.84886 8.05717H8.34886C8.34886 10.0049 9.92777 11.5838 11.8755 11.5838V10.0838ZM9.84886 8.05717C9.84886 6.93792 10.7562 6.03058 11.8755 6.03058V4.53058C9.92777 4.53058 8.34886 6.10949 8.34886 8.05717H9.84886ZM11.8755 6.03058C12.9947 6.03058 13.9021 6.93792 13.9021 8.05717H15.4021C15.4021 6.10949 13.8231 4.53058 11.8755 4.53058V6.03058ZM9.09886 14.3604H14.6521V12.8604H9.09886V14.3604ZM14.6521 18.4136H9.09886V19.9136H14.6521V18.4136ZM9.09886 18.4136C7.9796 18.4136 7.07227 17.5062 7.07227 16.387H5.57227C5.57227 18.3346 7.15118 19.9136 9.09886 19.9136V18.4136ZM16.6786 16.387C16.6786 17.5062 15.7713 18.4136 14.6521 18.4136V19.9136C16.5997 19.9136 18.1786 18.3346 18.1786 16.387H16.6786ZM14.6521 14.3604C15.7713 14.3604 16.6786 15.2677 16.6786 16.387H18.1786C18.1786 14.4393 16.5997 12.8604 14.6521 12.8604V14.3604ZM9.09886 12.8604C7.15118 12.8604 5.57227 14.4393 5.57227 16.387H7.07227C7.07227 15.2677 7.9796 14.3604 9.09886 14.3604V12.8604Z" fill="#313742"/>
@@ -403,14 +404,55 @@
   </div>
 </footer>
  
-    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250619133928"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20250619133928"></script>
-<script src="js/app.js?_v=20250619133928"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const TOUR_KEY = 'tour_person_v5';
+
+        const d = driver.js.driver({
+          showProgress: true,
+          allowClose: true, 
+          stagePadding: 6,
+          smoothScroll: true,
+          nextBtnText: 'Далее',
+          prevBtnText: 'Назад',
+          doneBtnText: 'Готово',
+          steps: [
+            {
+              element: '.cabinet__patients',
+              popover: {
+                title: 'Список пациентов и анализы',
+                description:
+                  'Здесь — все анализы ваших пациентов, отсортированные по дате. Нажмите на пациента, чтобы посмотреть подробности.',
+                side: 'right',
+                align: 'start',
+                offset: { left: 30 }
+              }
+            }
+          ],
+          onDestroyed: () => {
+            localStorage.setItem(TOUR_KEY, '1');
+          }
+        });
+
+        if (!localStorage.getItem(TOUR_KEY)) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            setTimeout(() => d.drive(), 1000);
+          }));
+        }
+
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20251029172838"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js?_v=20251029172838"></script>
+<script src="js/app.js?_v=20251029172838"></script>
   </body>
 </html>

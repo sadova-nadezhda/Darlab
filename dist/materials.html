@@ -5,9 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Расходные материалы</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20250619133928">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250619133928" />
-  <link rel="stylesheet" href="css/style.css?_v=20250619133928" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?_v=20251029172838">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251029172838" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css?_v=20251029172838"/>
+  <link rel="stylesheet" href="css/style.css?_v=20251029172838" />
 </head>
 
   <body>
@@ -74,7 +75,7 @@
                 </div>
                 Личные данные
               </a></li>
-              <li><a href="materials.html" class="stroke active">
+              <li class="cabinet__material"><a href="materials.html" class="stroke active">
                 <div class="icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.71353 4V6.66668M4.71353 6.66668H7.3802M4.71353 6.66668C5.63569 5.07254 7.35925 4 9.33336 4H14.6667C17.6122 4 20 6.3878 20 9.33332V14.6667C20 17.6122 17.6122 20 14.6667 20H9.33336C6.38783 20 4 17.6122 4 14.6667V12M14.6667 14.6667L12 12V8" stroke="#313742" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -529,14 +530,55 @@
   </div>
 </footer>
  
-    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20250619133928"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20250619133928"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20250619133928"></script>
-<script src="js/app.js?_v=20250619133928"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const TOUR_KEY = 'tour_person_v8';
+
+        const d = driver.js.driver({
+          showProgress: true,
+          allowClose: true, 
+          stagePadding: 6,
+          smoothScroll: true,
+          nextBtnText: 'Далее',
+          prevBtnText: 'Назад',
+          doneBtnText: 'Готово',
+          steps: [
+            {
+              element: '.cabinet__material',
+              popover: {
+                title: 'Расходные материалы',
+                description:
+                  'В этом разделе вы можете заказать расходные материалы для вашего филиала.',
+                side: 'right',
+                align: 'start',
+                offset: { left: 30 }
+              }
+            }
+          ],
+          onDestroyed: () => {
+            localStorage.setItem(TOUR_KEY, '1');
+          }
+        });
+
+        if (!localStorage.getItem(TOUR_KEY)) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            setTimeout(() => d.drive(), 1000);
+          }));
+        }
+
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/kk.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js?_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js?_v=20251029172838"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&_v=20251029172838"></script>
+<script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js?_v=20251029172838"></script>
+<script src="js/app.js?_v=20251029172838"></script>
   </body>
 </html>

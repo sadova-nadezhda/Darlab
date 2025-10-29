@@ -738,6 +738,79 @@ span.flatpickr-weekday {
   background: rgba(255, 255, 255, 0.35);
 }
 
+.driver-popover {
+  max-width: calc(420 * var(--width-multiplier));
+  padding: calc(20 * var(--width-multiplier));
+  border-radius: calc(8 * var(--width-multiplier));
+}
+
+.driver-popover-arrow {
+  border-width: calc(12 * var(--width-multiplier));
+}
+
+.driver-popover-close-btn {
+  width: calc(32 * var(--width-multiplier));
+  height: calc(28 * var(--width-multiplier));
+  font-size: calc(24 * var(--width-multiplier));
+}
+
+.driver-popover-title {
+  font: 600 calc(20 * var(--width-multiplier))/1 MontserratAlternates;
+}
+
+.driver-popover-description {
+  font-family: Gilroy, Arial, sans-serif;
+  font-size: calc(16 * var(--width-multiplier));
+  line-height: 140%;
+}
+
+.driver-popover-title[style*=block] + .driver-popover-description {
+  margin-top: calc(12 * var(--width-multiplier));
+}
+
+.driver-popover-footer {
+  margin-top: calc(16 * var(--width-multiplier));
+}
+
+.driver-popover-footer button {
+  padding: calc(12 * var(--width-multiplier)) calc(16 * var(--width-multiplier));
+  border-radius: calc(12 * var(--width-multiplier));
+  border-top-left-radius: 0;
+  color: rgb(2, 3, 4);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: calc(14 * var(--width-multiplier));
+  line-height: 1;
+}
+
+.driver-popover-footer .driver-popover-prev-btn {
+  border: 1px solid rgb(2, 3, 4);
+  background-color: transparent;
+}
+
+.driver-popover-footer .driver-popover-prev-btn:hover {
+  background-color: var(--primary-green, #94B522);
+  border-color: var(--primary-green, #94B522);
+}
+
+.driver-popover-footer .driver-popover-next-btn {
+  border: 1px solid rgb(243, 193, 11);
+  background-color: rgb(243, 193, 11);
+}
+
+.driver-popover-footer .driver-popover-next-btn:hover {
+  background-color: var(--primary-green, #94B522);
+  border-color: var(--primary-green, #94B522);
+}
+
+.driver-popover-navigation-btns button + button {
+  margin-left: calc(8 * var(--width-multiplier));
+}
+
+.driver-popover-progress-text {
+  font-size: calc(12 * var(--width-multiplier));
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -5829,6 +5902,25 @@ section {
 
   .modal {
     padding: calc(16 * var(--width-multiplier));
+  }
+}
+
+@media (max-width: 767px) {
+  .driver-popover {
+    max-width: calc(320 * var(--width-multiplier));
+    padding: calc(16 * var(--width-multiplier));
+  }
+
+  .driver-popover-arrow {
+    display: none;
+  }
+
+  .driver-popover-title {
+    font-size: calc(16 * var(--width-multiplier));
+  }
+
+  .driver-popover-description {
+    font-size: calc(14 * var(--width-multiplier));
   }
 }
 
